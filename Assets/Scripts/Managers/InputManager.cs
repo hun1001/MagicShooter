@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InputManager : MonoSingleton<InputManager>
 {
+    [Tooltip("Mouse Sensitivity")]
+    [SerializeField]
+    private float _mouseSensitivity = 50.0f;
+
     public float Horizontal => _horizontal;
     public float Vertical => _vertical;
     public Vector2 MouseMovement => _mouseMovement;
@@ -15,8 +19,24 @@ public class InputManager : MonoSingleton<InputManager>
 
     void Update()
     {
+        UpdateHorizontal();
+        UpdateVertical();
+        UpdateMouseMovement();
+    }
+
+    void UpdateHorizontal()
+    {
         _horizontal = Input.GetAxis("Horizontal");
+    }
+
+    void UpdateVertical()
+    {
         _vertical = Input.GetAxis("Vertical");
+    }
+
+    void UpdateMouseMovement()
+    {
         _mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        _mouseMovement = Vector2.Scale(_mouseMovement, new Vector2(_mouseSensitivity, _mouseSensitivity));
     }
 }
