@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,9 @@ public class CharacterMove : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 10.0f;
+
+    [SerializeField]
+    private float _sensitivity = 45.0f;
 
     private CharacterController _controller;
 
@@ -40,6 +44,6 @@ public class CharacterMove : MonoBehaviour
 
         Vector3 rotation = new Vector3(0, y, 0);
 
-        transform.Rotate(rotation * _speed * Time.deltaTime);
+        transform.Rotate(rotation * _sensitivity * Time.deltaTime);
     }
 }

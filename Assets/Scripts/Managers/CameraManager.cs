@@ -5,7 +5,10 @@ using UnityEngine;
 public class CameraManager : MonoSingleton<CameraManager>
 {
     [SerializeField]
-    private Transform _target;
+    private Transform _targetTransform;
+
+    [SerializeField]
+    private Vector3 _offset = Vector3.zero;
 
     [SerializeField]
     [Range(2.0f, 20.0f)]
@@ -26,7 +29,7 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private void Start()
     {
-        if (_target == null)
+        if (_targetTransform == null)
         {
             Debug.LogError("Target is null");
             return;
@@ -40,17 +43,17 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private void MoveRotate()
     {
-        Vector3 pos = _target.position
-                      + (-_target.forward * _distance)
-                      + (_target.up * _height);
+        Vector3 pos = _targetTransform.position
+                      + (-_targetTransform.forward * _distance)
+                      + (_targetTransform.up * _height);
 
         // 카메라 위치 설정
         transform.position = Vector3.Slerp(transform.position, pos, _moveDamping * Time.deltaTime);
 
         // 구면 보간 : 현재 회전 -> 타겟의 회전 
-        transform.rotation = Quaternion.Slerp(transform.rotation, _target.rotation, _rotateDamping * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, _targetTransform.rotation, _rotateDamping * Time.deltaTime);
 
-        transform.LookAt(_target.position + (_target.up * _targetOffset));
+        transform.LookAt(_targetTransform.position + (_targetTransform.up * _targetOffset));
 
     }
 }
