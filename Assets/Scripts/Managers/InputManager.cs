@@ -24,17 +24,17 @@ public class InputManager : MonoSingleton<InputManager>
         UpdateMouseMovement();
     }
 
-    void UpdateHorizontal()
+    private void UpdateHorizontal()
     {
         _horizontal = Input.GetAxis("Horizontal");
     }
 
-    void UpdateVertical()
+    private void UpdateVertical()
     {
         _vertical = Input.GetAxis("Vertical");
     }
 
-    void UpdateMouseMovement()
+    private void UpdateMouseMovement()
     {
         _mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         _mouseMovement = Vector2.Scale(_mouseMovement, new Vector2(_mouseSensitivity, _mouseSensitivity));

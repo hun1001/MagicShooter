@@ -8,9 +8,6 @@ public class CharacterMove : MonoBehaviour
     [SerializeField]
     private float _speed = 10.0f;
 
-    [SerializeField]
-    private float _sensitivity = 45.0f;
-
     private CharacterController _controller;
 
     private Camera _camera;
@@ -25,7 +22,7 @@ public class CharacterMove : MonoBehaviour
     void Update()
     {
         Move();
-        // Rotate();
+        Rotate();
     }
 
     private void Move()
@@ -40,10 +37,10 @@ public class CharacterMove : MonoBehaviour
 
     private void Rotate()
     {
-        float y = Input.GetAxis("Mouse X");
+        float y = InputManager.Instance.MouseMovement.x;
 
         Vector3 rotation = new Vector3(0, y, 0);
 
-        transform.Rotate(rotation * _sensitivity * Time.deltaTime);
+        transform.Rotate(rotation * Time.deltaTime);
     }
 }

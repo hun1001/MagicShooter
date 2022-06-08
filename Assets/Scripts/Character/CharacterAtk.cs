@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class CharacterAtk : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     void Update()
     {
-
+        Debug.DrawRay(transform.position, transform.forward * Mathf.Infinity, Color.blue);
     }
-
-
 }

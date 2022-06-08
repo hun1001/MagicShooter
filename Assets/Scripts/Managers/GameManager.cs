@@ -9,9 +9,4 @@ public class GameManager : MonoBehaviour
         MouseManager.Lock(true);
         MouseManager.Show(false);
     }
-
-    void Update()
-    {
-
-    }
 }
