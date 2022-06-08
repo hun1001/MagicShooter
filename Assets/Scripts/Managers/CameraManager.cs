@@ -10,12 +10,6 @@ public class CameraManager : MonoSingleton<CameraManager>
     [SerializeField]
     private Vector3 _offset = Vector3.zero;
 
-    [SerializeField]
-    private float _moveDamping = 15f;
-
-    [SerializeField]
-    private float _rotateDamping = 10f;
-
     private void Start()
     {
         if (_targetTransform == null)
@@ -32,11 +26,7 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private void MoveRotate()
     {
-        Vector2 mouseMovement = Vector2.zero;
-
-        Debug.Log(mouseMovement);
-
-        transform.RotateAround(_targetTransform.position, Vector3.up, mouseMovement.x * _rotateDamping * Time.deltaTime);
-        transform.RotateAround(_targetTransform.position, transform.right, -mouseMovement.y * _rotateDamping * Time.deltaTime);
+        Vector2 mouseMovement = InputManager.Instance.MouseMovement;
+        Vector3 targetPosition = _targetTransform.position + _offset;
     }
 }

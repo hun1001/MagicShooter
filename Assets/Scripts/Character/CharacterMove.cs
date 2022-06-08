@@ -25,13 +25,13 @@ public class CharacterMove : MonoBehaviour
     void Update()
     {
         Move();
-        Rotate();
+        // Rotate();
     }
 
     private void Move()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = InputManager.Instance.Horizontal;
+        float z = InputManager.Instance.Vertical;
 
         Vector3 move = transform.right * x + transform.forward * z;
 
