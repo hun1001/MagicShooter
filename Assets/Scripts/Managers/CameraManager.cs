@@ -21,7 +21,13 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private void LateUpdate()
     {
+        FirstCameraMoveRotate();
+    }
 
+    private void FirstCameraMoveRotate()
+    {
+        transform.position = _targetTransform.position;
+        transform.rotation = _targetTransform.rotation;
     }
 
     private void Move()
@@ -31,9 +37,9 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private void Rotate()
     {
-        Vector2 mouseMovement = InputManager.Instance.MouseMovement;
-        transform.RotateAround(_targetTransform.position, _targetTransform.up, mouseMovement.x * Time.deltaTime * 50.0f);
-        transform.RotateAround(_targetTransform.position, transform.right, -mouseMovement.y * Time.deltaTime);
+        // Vector2 mouseMovement = InputManager.Instance.MouseMovement;
+        // transform.RotateAround(_targetTransform.position, _targetTransform.up, mouseMovement.x * Time.deltaTime * 50.0f);
+        // transform.RotateAround(_targetTransform.position, transform.right, -mouseMovement.y * Time.deltaTime);
     }
 
     public void Zoom()
