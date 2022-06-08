@@ -27,5 +27,6 @@ public class CameraManager : MonoSingleton<CameraManager>
     private void MoveRotate()
     {
         transform.position = _target.position + _offset;
+        transform.rotation = Quaternion.Slerp(transform.rotation, _target.rotation, Time.deltaTime);
     }
 }
