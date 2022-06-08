@@ -6,12 +6,14 @@ using UnityEngine;
 public class CharacterAtk : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _bulletPrefab;
+    private GameObject _bulletPrefab = null;
+
+    private Transform _bulletSpawn = null;
 
     void Start()
     {
+        _bulletSpawn = GetComponent<Transform>();//transform.Find("BulletSpawn");
         EventManager.StartListening("Fire", Fire);
-
     }
 
     void Update()
@@ -21,6 +23,6 @@ public class CharacterAtk : MonoBehaviour
 
     void Fire()
     {
-        Instantiate(_bulletPrefab, transform.position, transform.rotation);
+        Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 }
