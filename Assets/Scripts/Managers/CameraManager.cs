@@ -23,7 +23,7 @@ public class CameraManager : MonoSingleton<CameraManager>
     {
         FirstCameraMoveRotate();
     }
-
+    // 이거 무조건 수정하기
     private void FirstCameraMoveRotate()
     {
         transform.position = _targetTransform.position;
