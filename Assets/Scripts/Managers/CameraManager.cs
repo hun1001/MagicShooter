@@ -11,21 +11,10 @@ public class CameraManager : MonoSingleton<CameraManager>
     private Vector3 _offset = Vector3.zero;
 
     [SerializeField]
-    [Range(2.0f, 20.0f)]
-    private float _distance = 10.0f;
-
-    [SerializeField]
-    [Range(0.0f, 10.0f)]
-    private float _height = 2f;
-
-    [SerializeField]
     private float _moveDamping = 15f;
 
     [SerializeField]
     private float _rotateDamping = 10f;
-
-    [SerializeField]
-    private float _targetOffset = 2f;
 
     private void Start()
     {
@@ -43,17 +32,11 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private void MoveRotate()
     {
-        Vector3 pos = _targetTransform.position
-                      + (-_targetTransform.forward * _distance)
-                      + (_targetTransform.up * _height);
+        Vector2 mouseMovement = Vector2.zero;
 
-        // 카메라 위치 설정
-        transform.position = Vector3.Slerp(transform.position, pos, _moveDamping * Time.deltaTime);
+        Debug.Log(mouseMovement);
 
-        // 구면 보간 : 현재 회전 -> 타겟의 회전 
-        transform.rotation = Quaternion.Slerp(transform.rotation, _targetTransform.rotation, _rotateDamping * Time.deltaTime);
-
-        transform.LookAt(_targetTransform.position + (_targetTransform.up * _targetOffset));
-
+        transform.RotateAround(_targetTransform.position, Vector3.up, mouseMovement.x * _rotateDamping * Time.deltaTime);
+        transform.RotateAround(_targetTransform.position, transform.right, -mouseMovement.y * _rotateDamping * Time.deltaTime);
     }
 }
