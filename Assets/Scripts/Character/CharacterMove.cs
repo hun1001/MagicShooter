@@ -36,6 +36,10 @@ public class CharacterMove : MonoBehaviour
 
     private void Rotate()
     {
-        transform.rotation = Quaternion.Euler(0, _camera.transform.eulerAngles.y, 0);
+        float y = Input.GetAxis("Mouse X");
+
+        Vector3 rotation = new Vector3(0, y, 0);
+
+        transform.Rotate(rotation * _speed * Time.deltaTime);
     }
 }
