@@ -24,6 +24,11 @@ public class CameraManager : MonoSingleton<CameraManager>
         Rotate();
     }
 
+    private void Move()
+    {
+
+    }
+
     private void Rotate()
     {
         Vector2 mouseMovement = InputManager.Instance.MouseMovement;
