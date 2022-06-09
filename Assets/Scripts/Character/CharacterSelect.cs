@@ -25,6 +25,7 @@ public class CharacterSelect : MonoBehaviour
 
     IEnumerator ChangeColor(Renderer renderer)
     {
+        Debug.Log("SelectObject");
         Color color = renderer.material.color;
         renderer.material.color = Color.red;
         renderer.transform.DORotate(new Vector3(0, renderer.transform.rotation.eulerAngles.y + 180, 0), 0.5f);
