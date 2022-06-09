@@ -24,10 +24,10 @@ public class CameraManager : MonoSingleton<CameraManager>
         FirstCameraMoveRotate();
     }
 
-    // 이거 무조건 수정하기
+    // 이거 무조건 수정하기 1인칭으로 안할꺼임
     private void FirstCameraMoveRotate()
     {
-        transform.position = _targetTransform.position;
+        transform.position = _targetTransform.position + _offset;
         transform.rotation = _targetTransform.rotation;
     }
 

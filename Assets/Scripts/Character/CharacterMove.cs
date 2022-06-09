@@ -8,21 +8,29 @@ public class CharacterMove : MonoBehaviour
     [SerializeField]
     private float _speed = 10.0f;
 
-    private CharacterController _controller;
+    private CharacterController _controller = null;
 
-    private Camera _camera;
+    private CollisionFlags _collisionFlags = CollisionFlags.None;
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
-        _camera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
         Rotate();
+    }
+
+    void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 50;
+        style.normal.textColor = Color.black;
+
+        GUI.Label(new Rect(10, 60, 300, 100), $"Pos {transform.position}", style);
+        GUI.Label(new Rect(10, 10, 300, 100), "CollisionFlags : " + _collisionFlags.ToString(), style);
     }
 
     private void Move()
@@ -32,7 +40,9 @@ public class CharacterMove : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        _controller.Move(move * _speed * Time.deltaTime);
+        move -= AddGravity();
+
+        _collisionFlags = _controller.Move(move * _speed * Time.deltaTime);
     }
 
     private void Rotate()
@@ -42,5 +52,17 @@ public class CharacterMove : MonoBehaviour
         Vector3 rotation = new Vector3(0, y, 0);
 
         transform.Rotate(rotation * Time.deltaTime);
+    }
+
+    Vector3 AddGravity()
+    {
+        Vector3 gravity = Vector3.zero;
+
+        if ((_collisionFlags & CollisionFlags.Below) == 0)
+        {
+            gravity = Vector3.down * Physics.gravity.y;
+        }
+
+        return gravity;
     }
 }
