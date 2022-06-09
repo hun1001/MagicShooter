@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CharacterSelect : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class CharacterSelect : MonoBehaviour
     {
         Color color = renderer.material.color;
         renderer.material.color = Color.red;
+        renderer.transform.DORotate(new Vector3(0, renderer.transform.rotation.eulerAngles.y + 180, 0), 0.5f);
         yield return new WaitForSeconds(0.5f);
         renderer.material.color = color;
     }
