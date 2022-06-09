@@ -8,7 +8,7 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 10.0f;
+    private float _speed = 50.0f;
     void Start()
     {
         StartCoroutine(Pull());
