@@ -28,7 +28,7 @@ public class CameraManager : MonoSingleton<CameraManager>
     private void FirstCameraMoveRotate()
     {
         transform.position = _targetTransform.position + _offset;
-        transform.rotation = _targetTransform.rotation;
+        transform.rotation = Quaternion.Euler(new Vector3(0, _targetTransform.eulerAngles.y, 0));
     }
 
     private void Move()

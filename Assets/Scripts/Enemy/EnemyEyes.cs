@@ -24,19 +24,23 @@ public class EnemyEyes : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Dot(transform.forward, (_target.position - transform.position).normalized) > Mathf.Cos(_viewAngle * Mathf.Deg2Rad) && _isView)
+        if (Vector3.Dot(transform.forward, (_target.position - transform.position).normalized) > Mathf.Cos(_viewAngle * Mathf.Deg2Rad) && !_isView)
         {
             if (Vector3.Distance(transform.position, _target.position) < _viewDistance)
             {
                 _isView = true;
                 _enemyMove.state = EnemyMove.EnemyState.Chase;
+                gameObject.SendMessageUpwards("FindTarget");
+                Debug.Log("Find");
             }
         }
-        else
-        {
-            _isView = false;
-            _enemyMove.state = EnemyMove.EnemyState.Idle;
-        }
+    }
+
+    void ChangeState()
+    {
+        _enemyMove.state = EnemyMove.EnemyState.Chase;
+        _isView = true;
+        Debug.Log("ChangeChase");
     }
 
     public bool IsView()

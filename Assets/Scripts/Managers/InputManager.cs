@@ -26,6 +26,10 @@ public class InputManager : MonoSingleton<InputManager>
         {
             EventManager.TriggerEvent("Fire");
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            EventManager.TriggerEvent("Check");
+        }
     }
 
     private void UpdateHorizontal()
