@@ -5,45 +5,33 @@ using UnityEngine;
 public class CameraManager : MonoSingleton<CameraManager>
 {
     [SerializeField]
-    private Transform _targetTransform;
+    private Transform _cameraTransform;
 
-    [SerializeField]
-    private Vector3 _offset = Vector3.zero;
+    private Transform _lookAtTransform;
 
     private void Start()
     {
-        if (_targetTransform == null)
+        if (_cameraTransform == null)
         {
             Debug.LogError("Target is null");
             return;
         }
+        _lookAtTransform = _cameraTransform.GetChild(0);
+        EventManager.StartListening("Zoom", Zoom);
     }
 
     private void LateUpdate()
     {
-        FirstCameraMoveRotate();
-    }
-
-    // 이거 무조건 수정하기 1인칭으로 안할꺼임
-    private void FirstCameraMoveRotate()
-    {
-        transform.position = _targetTransform.position + _offset;
-        transform.rotation = Quaternion.Euler(new Vector3(0, _targetTransform.eulerAngles.y, 0));
+        Move();
     }
 
     private void Move()
     {
-
+        transform.position = _cameraTransform.position;
+        transform.LookAt(_lookAtTransform);
     }
 
-    private void Rotate()
-    {
-        // Vector2 mouseMovement = InputManager.Instance.MouseMovement;
-        // transform.RotateAround(_targetTransform.position, _targetTransform.up, mouseMovement.x * Time.deltaTime * 50.0f);
-        // transform.RotateAround(_targetTransform.position, transform.right, -mouseMovement.y * Time.deltaTime);
-    }
-
-    public void Zoom()
+    private void Zoom()
     {
 
     }

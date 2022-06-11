@@ -28,7 +28,7 @@ public class InputManager : MonoSingleton<InputManager>
         }
         if (Input.GetMouseButtonDown(1))
         {
-            EventManager.TriggerEvent("Check");
+            EventManager.TriggerEvent("Zoom");
         }
     }
 
