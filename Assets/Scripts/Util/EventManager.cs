@@ -71,5 +71,9 @@ public class EventManager : MonoBehaviour
         {
             thisEvent.Invoke();
         }
+        else
+        {
+            Debug.LogError("Event not found: " + eventName);
+        }
     }
 }

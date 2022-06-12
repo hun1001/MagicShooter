@@ -24,7 +24,7 @@ public class InputManager : MonoSingleton<InputManager>
         UpdateMouseMovement();
         if (Input.GetMouseButtonDown(0))
         {
-            EventManager.TriggerEvent("Fire");
+            EventManager.TriggerEvent("PlayerFire");
         }
         if (Input.GetMouseButtonDown(1))
         {

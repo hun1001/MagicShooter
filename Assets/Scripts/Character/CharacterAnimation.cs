@@ -6,11 +6,11 @@ public class CharacterAnimation : MonoBehaviour
 {
     void Start()
     {
-
+        EventManager.StartListening("PlayMoveAnimation", Move);
     }
 
     private void Move()
     {
-        Debug.Log("MoveForward");
+
     }
 }
