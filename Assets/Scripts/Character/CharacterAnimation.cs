@@ -20,11 +20,13 @@ public class CharacterAnimation : MonoBehaviour
     {
         if (InputManager.Instance.Horizontal != 0 || InputManager.Instance.Vertical != 0)
         {
-            _animator.SetBool("IsWalking", true);
+            _animator.SetBool("IsMove", true);
         }
         else
         {
-            _animator.SetBool("IsWalking", false);
+            _animator.SetBool("IsMove", false);
         }
+        _animator.SetFloat("xDir", InputManager.Instance.Horizontal);
+        _animator.SetFloat("yDir", InputManager.Instance.Vertical);
     }
 }

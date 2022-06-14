@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterMove : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 10.0f;
+    private float _speed = default;
 
     private CharacterController _controller = null;
 
