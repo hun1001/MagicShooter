@@ -11,9 +11,6 @@ public class CharacterMove : MonoBehaviour
     // [SerializeField]
     // private float _jumpForce = default;
 
-    [SerializeField]
-    private float _gravity = default;
-
     private CharacterController _controller = null;
 
     private CollisionFlags _collisionFlags = CollisionFlags.None;
@@ -73,7 +70,7 @@ public class CharacterMove : MonoBehaviour
 
         if ((_collisionFlags & CollisionFlags.Below) == 0)
         {
-            gravity = Vector3.down * _gravity * Time.deltaTime;
+            gravity = Vector3.down * Physics.gravity.y * Time.deltaTime;
         }
 
         return gravity;
