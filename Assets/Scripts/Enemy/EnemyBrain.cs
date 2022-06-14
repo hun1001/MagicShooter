@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
+    private EnemyState _state = EnemyState.Idle;
 
     void Start()
     {
