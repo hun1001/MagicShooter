@@ -8,6 +8,12 @@ public class CharacterMove : MonoBehaviour
     [SerializeField]
     private float _speed = default;
 
+    // [SerializeField]
+    // private float _jumpForce = default;
+
+    [SerializeField]
+    private float _gravity = default;
+
     private CharacterController _controller = null;
 
     private CollisionFlags _collisionFlags = CollisionFlags.None;
@@ -15,6 +21,7 @@ public class CharacterMove : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        //EventManager.StartListening("PlayerJump", Jump);
     }
 
     void Update()
@@ -45,6 +52,12 @@ public class CharacterMove : MonoBehaviour
         _collisionFlags = _controller.Move(move * _speed * Time.deltaTime);
     }
 
+    // 게임에 안어울려서 일단 제외
+    // private void Jump()
+    // {
+    //     _collisionFlags = _controller.Move(Vector3.up * _jumpForce * Time.deltaTime);
+    // }
+
     private void Rotate()
     {
         float y = InputManager.Instance.MouseMovement.x;
@@ -60,7 +73,7 @@ public class CharacterMove : MonoBehaviour
 
         if ((_collisionFlags & CollisionFlags.Below) == 0)
         {
-            gravity = Vector3.down * Physics.gravity.y;
+            gravity = Vector3.down * _gravity * Time.deltaTime;
         }
 
         return gravity;

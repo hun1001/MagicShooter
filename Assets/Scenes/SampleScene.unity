@@ -3124,6 +3124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
+  _jumpForce: 0
+  _gravity: 0
 --- !u!4 &7673487252127738038
 Transform:
   m_ObjectHideFlags: 0

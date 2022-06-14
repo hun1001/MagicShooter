@@ -9,6 +9,7 @@ public class CharacterAnimation : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        // EventManager.StartListening("PlayerJump", Jump);
     }
 
     void Update()
@@ -29,4 +30,9 @@ public class CharacterAnimation : MonoBehaviour
         _animator.SetFloat("xDir", InputManager.Instance.Horizontal);
         _animator.SetFloat("yDir", InputManager.Instance.Vertical);
     }
+
+    // private void Jump()
+    // {
+    //     _animator.SetTrigger("Jump");
+    // }
 }

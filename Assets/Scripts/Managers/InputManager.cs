@@ -30,6 +30,10 @@ public class InputManager : MonoSingleton<InputManager>
         {
             EventManager.TriggerEvent("Zoom");
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // EventManager.TriggerEvent("PlayerJump");
+        }
     }
 
     private void UpdateHorizontal()
