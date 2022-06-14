@@ -12,8 +12,8 @@ public class CharacterAtk : MonoBehaviour
 
     void Start()
     {
-        _bulletSpawn = GetComponent<Transform>();//transform.Find("BulletSpawn");
-        EventManager.StartListening("Fire", Fire);
+        _bulletSpawn = transform;
+        EventManager.StartListening("PlayerFire", Fire);
     }
 
     void Update()
@@ -23,6 +23,11 @@ public class CharacterAtk : MonoBehaviour
 
     void Fire()
     {
+        if (_bulletSpawn == null)
+        {
+            Debug.LogError("BulletSpawn not found");
+            return;
+        }
         Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 }
