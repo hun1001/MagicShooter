@@ -12,7 +12,7 @@ public class CharacterAtk : MonoBehaviour
 
     void Start()
     {
-        _bulletSpawn = transform;
+        _bulletSpawn = transform.Find("BulletSpawnPos");
         EventManager.StartListening("PlayerFire", Fire);
     }
 
