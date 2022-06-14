@@ -33,6 +33,6 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private void Zoom()
     {
-
+        Debug.Log("Zoom");
     }
 }
