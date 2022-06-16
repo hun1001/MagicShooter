@@ -31,7 +31,7 @@ public class CharacterAttack : MonoBehaviour
         Vector3 layDir = CameraManager.Instance.GetAimDirection();
         RaycastHit hit;
 
-        Debug.DrawRay(Camera.main.transform.position, layDir * 100.0f, Color.red, 5f);
+        //Debug.DrawRay(Camera.main.transform.position, layDir * 100.0f, Color.red, 5f);
         if (Physics.Raycast(Camera.main.transform.position, layDir, out hit, 100.0f))
         {
             layDir = hit.point - _bulletSpawn.position;
@@ -40,8 +40,8 @@ public class CharacterAttack : MonoBehaviour
         if (Physics.Raycast(_bulletSpawn.position, layDir, out hit, 100.0f))
         {
             layDir = hit.point - _bulletSpawn.position;
-            Debug.Log(hit.point);
-            Debug.DrawRay(_bulletSpawn.position, layDir * 100.0f, Color.blue, 5f);
+            //Debug.Log(hit.point);
+            //Debug.DrawRay(_bulletSpawn.position, layDir * 100.0f, Color.blue, 5f);
         }
 
         GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(layDir));
