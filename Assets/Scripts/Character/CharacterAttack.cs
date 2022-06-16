@@ -31,11 +31,19 @@ public class CharacterAttack : MonoBehaviour
         Vector3 layDir = CameraManager.Instance.GetAimDirection();
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, layDir, out hit, 100.0f))
+        Debug.DrawRay(Camera.main.transform.position, layDir * 100.0f, Color.red, 5f);
+        if (Physics.Raycast(Camera.main.transform.position, layDir, out hit, 100.0f))
         {
-            Debug.Log("Hit: " + hit.transform.position);
+            layDir = hit.point - _bulletSpawn.position;
         }
 
-        Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+        if (Physics.Raycast(_bulletSpawn.position, layDir, out hit, 100.0f))
+        {
+            layDir = hit.point - _bulletSpawn.position;
+            Debug.Log(hit.point);
+            Debug.DrawRay(_bulletSpawn.position, layDir * 100.0f, Color.blue, 5f);
+        }
+
+        GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(layDir));
     }
 }
