@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
-    private EnemyState _state = EnemyState.Idle;
+    public EnemyState _state;
 
     void Start()
     {
-
+        _state = EnemyState.Idle;
     }
 
     void Update()
