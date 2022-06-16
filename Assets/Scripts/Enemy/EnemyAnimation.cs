@@ -20,11 +20,11 @@ public class EnemyAnimation : MonoBehaviour
 
     private Animation _animation = null;
 
-    private EnemyState _state = default;
+    private EnemyBrain _brain = default;
 
     void Start()
     {
-        _state = GetComponent<EnemyBrain>()._state;
+        _brain = GetComponent<EnemyBrain>();
         _animation = GetComponent<Animation>();
 
         _animation[_idleClip.name].wrapMode = WrapMode.Loop;
@@ -42,7 +42,7 @@ public class EnemyAnimation : MonoBehaviour
 
     void AnimationCtrl()
     {
-        switch (_state)
+        switch (_brain._state)
         {
             case EnemyState.Wait:
             case EnemyState.Idle:

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAtk : MonoBehaviour
+public class CharacterAttack : MonoBehaviour
 {
     [SerializeField]
     private GameObject _bulletPrefab = null;
@@ -19,6 +19,7 @@ public class CharacterAtk : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position, transform.forward * 100.0f, Color.blue);
+        //Debug.DrawRay();
     }
 
     void Fire()

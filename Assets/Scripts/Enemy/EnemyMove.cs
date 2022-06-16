@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    private EnemyState _state = EnemyState.Idle;
+    private EnemyBrain _brain = null;
 
     [SerializeField]
     private float _speed = 5.0f;
@@ -20,7 +20,8 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
-        _state = GetComponent<EnemyBrain>()._state;
+        _brain = GetComponent<EnemyBrain>();
+        OnCkTarget(GameObject.FindGameObjectWithTag("Player"));
     }
 
     void Update()
@@ -30,7 +31,7 @@ public class EnemyMove : MonoBehaviour
 
     void CkState()
     {
-        switch (_state)
+        switch (_brain._state)
         {
             case EnemyState.Idle:
                 SetIdle();
@@ -52,7 +53,7 @@ public class EnemyMove : MonoBehaviour
         Vector3 distance = Vector3.zero;
         Vector3 posLookAt = Vector3.zero;
 
-        switch (_state)
+        switch (_brain._state)
         {
             case EnemyState.Walk:
                 if (_targetPos != Vector3.zero)
@@ -74,7 +75,7 @@ public class EnemyMove : MonoBehaviour
                     distance = _target.transform.position - transform.position;
                     if (distance.magnitude < _attackRange)
                     {
-                        _state = EnemyState.Attack;
+                        _brain._state = EnemyState.Attack;
                         return;
                     }
                     posLookAt = new Vector3(_target.transform.position.x, transform.position.y, _target.transform.position.z);
@@ -97,17 +98,17 @@ public class EnemyMove : MonoBehaviour
 
     IEnumerator SetWait()
     {
-        _state = EnemyState.Wait;
+        _brain._state = EnemyState.Wait;
         float timeWait = Random.Range(1.0f, 3.0f);
         yield return new WaitForSeconds(timeWait);
-        _state = EnemyState.Idle;
+        _brain._state = EnemyState.Idle;
     }
 
     void OnCkTarget(GameObject target)
     {
         _target = target;
         _targetTransform = _target.transform;
-        _state = EnemyState.Chase;
+        _brain._state = EnemyState.Chase;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -123,7 +124,7 @@ public class EnemyMove : MonoBehaviour
             }
             else
             {
-                _state = EnemyState.Death;
+                _brain._state = EnemyState.Death;
             }
         }
     }
@@ -133,7 +134,7 @@ public class EnemyMove : MonoBehaviour
         float distance = Vector3.Distance(_targetTransform.position, transform.position);
         if (distance > _attackRange + 0.5f)
         {
-            _state = EnemyState.Chase;
+            _brain._state = EnemyState.Chase;
         }
     }
 
@@ -150,11 +151,11 @@ public class EnemyMove : MonoBehaviour
             {
                 _targetPos.y = infoRayCast.point.y;
             }
-            _state = EnemyState.Walk;
+            _brain._state = EnemyState.Walk;
         }
         else
         {
-            _state = EnemyState.Chase;
+            _brain._state = EnemyState.Chase;
         }
     }
 }
