@@ -33,10 +33,15 @@ public class CameraManager : MonoSingleton<CameraManager>
 
         _lookAtTransform.localPosition = new Vector3(
             _lookAtTransform.localPosition.x,
-            Mathf.Clamp(_lookAtTransform.localPosition.y, -1.5f, 2f),
+            Mathf.Clamp(_lookAtTransform.localPosition.y, -1.5f, 3f),
             _lookAtTransform.localPosition.z);
 
         transform.LookAt(_lookAtTransform);
+    }
+
+    public Vector3 GetAimDirection()
+    {
+        return (_lookAtTransform.position - _cameraTransform.position).normalized;
     }
 
     private void Zoom()

@@ -19,7 +19,6 @@ public class CharacterAttack : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position, transform.forward * 100.0f, Color.blue);
-        //Debug.DrawRay();
     }
 
     void Fire()
@@ -29,6 +28,14 @@ public class CharacterAttack : MonoBehaviour
             Debug.LogError("BulletSpawn not found");
             return;
         }
+        Vector3 layDir = CameraManager.Instance.GetAimDirection();
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, layDir, out hit, 100.0f))
+        {
+            Debug.Log("Hit: " + hit.transform.position);
+        }
+
         Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 }
