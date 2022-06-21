@@ -9,17 +9,21 @@ public class CharacterAttack : MonoBehaviour
     private GameObject _bulletPrefab = null;
 
     private Transform _bulletSpawn = null;
-    RaycastHit hit;
+    private RaycastHit hit;
+
+    public WeaponBase _weapon { get; private set; } = null;
 
     void Start()
     {
-        _bulletSpawn = transform.Find("BulletSpawnPos");
+        _weapon = transform.GetComponentInChildren<WeaponBase>();
+        _bulletSpawn = _weapon._bulletSpawn;
         EventManager.StartListening("PlayerFire", Fire);
+        EventManager.StartListening("PlayerReload", Reload);
     }
 
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * 100.0f, Color.blue);
+        //Debug.DrawRay(transform.position, transform.forward * 100.0f, Color.blue);
     }
 
     void Fire()
@@ -31,8 +35,6 @@ public class CharacterAttack : MonoBehaviour
         }
         Vector3 layDir = CameraManager.Instance.GetAimDirection();
 
-
-        //Debug.DrawRay(Camera.main.transform.position, layDir * 100.0f, Color.red, 5f);
         if (Physics.Raycast(Camera.main.transform.position, layDir, out hit, 100.0f))
         {
             layDir = hit.point - _bulletSpawn.position;
@@ -41,11 +43,15 @@ public class CharacterAttack : MonoBehaviour
         if (Physics.Raycast(_bulletSpawn.position, layDir, out hit, 100.0f))
         {
             layDir = hit.point - _bulletSpawn.position;
-            //Debug.Log(hit.point);
-            //Debug.DrawRay(_bulletSpawn.position, layDir * 100.0f, Color.blue, 5f);
         }
 
-        GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(layDir));
+        //GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(layDir));
+        _weapon.Fire(_bulletPrefab, layDir);
+    }
+
+    void Reload()
+    {
+        _weapon.Reload();
     }
 
     void OnGUI()

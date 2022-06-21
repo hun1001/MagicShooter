@@ -18,13 +18,16 @@ public class CharacterUIController : MonoBehaviour
     private Image _weaponImage = null;
 
     private CharacterStat _stat = null;
+    private CharacterAttack _attack = null;
 
     void Awake()
     {
         _stat = GetComponent<CharacterStat>();
+        _attack = GetComponent<CharacterAttack>();
         _hpBar = _playerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         _mpBar = _playerInfo.transform.GetChild(0).GetChild(1).GetComponent<Image>();
         _levelText = _playerInfo.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
+        _weaponImage = _playerInfo.transform.parent.GetChild(2).GetComponent<Image>();
     }
 
     private void UpdatePlayerInfoUI()
@@ -32,5 +35,6 @@ public class CharacterUIController : MonoBehaviour
         _hpBar.fillAmount = _stat.HP / _stat.MAXHP;
         _mpBar.fillAmount = _stat.MP / _stat.MAXMP;
         _levelText.text = _stat.LEVEL.ToString();
+        _weaponImage.sprite = _attack._weapon._sprite;
     }
 }

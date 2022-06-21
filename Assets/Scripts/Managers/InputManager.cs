@@ -38,6 +38,10 @@ public class InputManager : MonoSingleton<InputManager>
         {
             EventManager.TriggerEvent("ChangeCanvas");
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            EventManager.TriggerEvent("PlayerReload");
+        }
     }
 
     private void UpdateHorizontal()
