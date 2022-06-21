@@ -34,7 +34,6 @@ public class CharacterMove : MonoBehaviour
         style.normal.textColor = Color.black;
 
         GUI.Label(new Rect(10, 60, 300, 100), $"Pos {transform.position}", style);
-        GUI.Label(new Rect(10, 10, 300, 100), "CollisionFlags : " + _collisionFlags.ToString(), style);
     }
 
     private void Move()

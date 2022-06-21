@@ -9,6 +9,7 @@ public class CharacterAttack : MonoBehaviour
     private GameObject _bulletPrefab = null;
 
     private Transform _bulletSpawn = null;
+    RaycastHit hit;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class CharacterAttack : MonoBehaviour
             return;
         }
         Vector3 layDir = CameraManager.Instance.GetAimDirection();
-        RaycastHit hit;
+
 
         //Debug.DrawRay(Camera.main.transform.position, layDir * 100.0f, Color.red, 5f);
         if (Physics.Raycast(Camera.main.transform.position, layDir, out hit, 100.0f))
@@ -45,5 +46,14 @@ public class CharacterAttack : MonoBehaviour
         }
 
         GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(layDir));
+    }
+
+    void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 50;
+        style.normal.textColor = Color.black;
+
+        GUI.Label(new Rect(10, 10, 300, 100), "Hit point" + hit.point, style);
     }
 }
