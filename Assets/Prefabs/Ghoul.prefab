@@ -1382,6 +1382,7 @@ GameObject:
   - component: {fileID: 1451348723040729921}
   - component: {fileID: 6810885540241930320}
   - component: {fileID: 3157627402501460254}
+  - component: {fileID: 1321946704}
   m_Layer: 0
   m_Name: Ghoul
   m_TagString: Enemy
@@ -1515,6 +1516,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+--- !u!114 &1321946704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294943986690878471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30c031af3100e04285d7124b8fae015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewDistance: 15
 --- !u!1 &4294951851114947555
 GameObject:
   m_ObjectHideFlags: 0

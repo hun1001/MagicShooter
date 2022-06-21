@@ -34,6 +34,10 @@ public class InputManager : MonoSingleton<InputManager>
         {
             // EventManager.TriggerEvent("PlayerJump");
         }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            EventManager.TriggerEvent("ChangeCanvas");
+        }
     }
 
     private void UpdateHorizontal()

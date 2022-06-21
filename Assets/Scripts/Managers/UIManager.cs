@@ -15,10 +15,18 @@ public class UIManager : MonoBehaviour
     {
         _GamePlayCanvas.enabled = true;
         _inventoryCanvas.enabled = false;
+        EventManager.StartListening("ChangeCanvas", ChangeCanvas);
     }
 
-    void Update()
+    private void ChangeCanvas()
     {
+        _GamePlayCanvas.enabled = !_GamePlayCanvas.enabled;
+        _inventoryCanvas.enabled = !_inventoryCanvas.enabled;
+    }
 
+    private void OnInventory()
+    {
+        _GamePlayCanvas.enabled = false;
+        _inventoryCanvas.enabled = true;
     }
 }

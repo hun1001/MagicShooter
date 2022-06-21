@@ -6,6 +6,9 @@ public class EnemyMove : EnemyBase
 {
     [SerializeField]
     private float _speed = 5.0f;
+    // 나중에 추가할 수도?
+    // [SerializeField]
+    // private float _runSpeed = 10.0f;
 
     private Vector3 _targetPos = Vector3.zero;
 
@@ -20,6 +23,8 @@ public class EnemyMove : EnemyBase
     {
         Vector3 distance = Vector3.zero;
         Vector3 posLookAt = Vector3.zero;
+        Vector3 amount = Vector3.zero;
+        Vector3 direction = Vector3.zero;
 
         switch (_brain._state)
         {
@@ -53,11 +58,11 @@ public class EnemyMove : EnemyBase
                 break;
         }
 
-        Vector3 direction = distance.normalized;
+        direction = distance.normalized;
 
         direction = new Vector3(direction.x, 0, direction.z);
 
-        Vector3 amount = direction * _speed * Time.deltaTime;
+        amount = direction * _speed * Time.deltaTime;
 
         transform.Translate(amount, Space.World);
 
