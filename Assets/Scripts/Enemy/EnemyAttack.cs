@@ -25,9 +25,6 @@ public class EnemyAttack : EnemyBase
             _hp -= 10;
             if (_hp > 0)
             {
-                //Instantiate(_effectDamage, other.transform.position, Quaternion.identity);
-
-                //effectDamageTween();
 
             }
             else
