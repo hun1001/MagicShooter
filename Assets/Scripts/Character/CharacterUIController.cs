@@ -15,6 +15,7 @@ public class CharacterUIController : MonoBehaviour
     private Image _mpBar = null;
 
     private TextMeshProUGUI _levelText = null;
+    private Image _weaponImage = null;
 
     private CharacterStat _stat = null;
 
