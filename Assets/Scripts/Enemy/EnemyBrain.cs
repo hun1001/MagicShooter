@@ -21,7 +21,7 @@ public class EnemyBrain : MonoBehaviour
         CkState();
     }
 
-    void OnCkTarget(GameObject target)
+    public void OnCkTarget(GameObject target)
     {
         _target = target;
         _targetTransform = _target.transform;
