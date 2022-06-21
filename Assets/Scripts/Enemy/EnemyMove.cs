@@ -14,7 +14,7 @@ public class EnemyMove : MonoBehaviour
     private Vector3 _targetPos = Vector3.zero;
 
     [Header("Fight properties")]
-    private float _hp = 500;
+    private float _hp = 50;
     private float _attackRange = 1.5f;
     private float _attackDamage = 10.0f;
 
@@ -121,6 +121,7 @@ public class EnemyMove : MonoBehaviour
                 //Instantiate(_effectDamage, other.transform.position, Quaternion.identity);
 
                 //effectDamageTween();
+
             }
             else
             {

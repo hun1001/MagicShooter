@@ -20,7 +20,7 @@ public class EnemyAnimation : MonoBehaviour
 
     private Animation _animation = null;
 
-    private EnemyBrain _brain = default;
+    private EnemyBrain _brain = null;
 
     void Start()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharacterManager : MonoSingleton<CharacterManager>
 {
-
     void Start()
     {
 
@@ -15,4 +14,5 @@ public class CharacterManager : MonoSingleton<CharacterManager>
     {
 
     }
+
 }

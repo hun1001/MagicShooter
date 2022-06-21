@@ -1379,6 +1379,8 @@ GameObject:
   - component: {fileID: 4184593274907888732}
   - component: {fileID: 4184593274907888723}
   - component: {fileID: 4184593274907888722}
+  - component: {fileID: 1353019303060718489}
+  - component: {fileID: 8018918383214045466}
   m_Layer: 0
   m_Name: Ghoul
   m_TagString: Enemy
@@ -1471,6 +1473,35 @@ MonoBehaviour:
   _attack1Clip: {fileID: 7400006, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   _attack2Clip: {fileID: 7400008, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
   _deathClip: {fileID: 7400010, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+--- !u!65 &1353019303060718489
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294943986690878471}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3.4, z: 2}
+  m_Center: {x: 0, y: 2, z: 0}
+--- !u!54 &8018918383214045466
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294943986690878471}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4294951851114947555
 GameObject:
   m_ObjectHideFlags: 0
