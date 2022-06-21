@@ -2,17 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack : EnemyBase
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Fight properties")]
+    private float _hp = 50;
+    private float _attackRange = 1.5f;
+    private float _attackDamage = 10.0f;
+
+    void SetAtk()
     {
-        
+        float distance = Vector3.Distance(_brain._targetTransform.position, transform.position);
+        if (distance > _attackRange + 0.5f)
+        {
+            _brain._state = EnemyState.CHASE;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Bullet"))
+        {
+            _hp -= 10;
+            if (_hp > 0)
+            {
+                //Instantiate(_effectDamage, other.transform.position, Quaternion.identity);
+
+                //effectDamageTween();
+
+            }
+            else
+            {
+                _brain._state = EnemyState.DEATH;
+            }
+        }
     }
 }

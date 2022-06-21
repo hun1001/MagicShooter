@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimation : MonoBehaviour
+public class EnemyAnimation : EnemyBase
 {
     [Header("Animation clip")]
     [SerializeField]
@@ -20,11 +20,8 @@ public class EnemyAnimation : MonoBehaviour
 
     private Animation _animation = null;
 
-    private EnemyBrain _brain = null;
-
     void Start()
     {
-        _brain = GetComponent<EnemyBrain>();
         _animation = GetComponent<Animation>();
 
         _animation[_idleClip.name].wrapMode = WrapMode.Loop;
@@ -44,20 +41,20 @@ public class EnemyAnimation : MonoBehaviour
     {
         switch (_brain._state)
         {
-            case EnemyState.Wait:
-            case EnemyState.Idle:
+            case EnemyState.WAIT:
+            case EnemyState.IDLE:
                 _animation.CrossFade(_idleClip.name);
                 break;
-            case EnemyState.Chase:
+            case EnemyState.CHASE:
                 _animation.CrossFade(_RunClip.name);
                 break;
-            case EnemyState.Walk:
+            case EnemyState.WALK:
                 _animation.CrossFade(_walkClip.name);
                 break;
-            case EnemyState.Attack:
+            case EnemyState.ATTACK:
                 _animation.CrossFade(_attack1Clip.name);
                 break;
-            case EnemyState.Death:
+            case EnemyState.DEATH:
                 _animation.CrossFade(_deathClip.name);
                 break;
             default:

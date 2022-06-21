@@ -5,10 +5,10 @@ using UnityEngine;
 
 public enum EnemyState
 {
-    Idle,
-    Walk,
-    Chase,
-    Attack,
-    Wait,
-    Death
+    IDLE,
+    WALK,
+    CHASE,
+    ATTACK,
+    WAIT,
+    DEATH
 }

@@ -2,50 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class EnemyMove : EnemyBase
 {
-    private EnemyBrain _brain = null;
-
     [SerializeField]
     private float _speed = 5.0f;
 
-    private GameObject _target = null;
-    private Transform _targetTransform = null;
     private Vector3 _targetPos = Vector3.zero;
-
-    [Header("Fight properties")]
-    private float _hp = 50;
-    private float _attackRange = 1.5f;
-    private float _attackDamage = 10.0f;
 
     void Start()
     {
-        _brain = GetComponent<EnemyBrain>();
-        OnCkTarget(GameObject.FindGameObjectWithTag("Player"));
-    }
-
-    void Update()
-    {
-        CkState();
-    }
-
-    void CkState()
-    {
-        switch (_brain._state)
-        {
-            case EnemyState.Idle:
-                SetIdle();
-                break;
-            case EnemyState.Chase:
-            case EnemyState.Walk:
-                SetMove();
-                break;
-            case EnemyState.Attack:
-                SetAtk();
-                break;
-            default:
-                break;
-        }
+        EventManager.StartListening("EnemyMove", SetMove);
+        EventManager.StartListening("EnemyWait", SetWait);
+        EventManager.StartListening("EnemyIdle", SetIdle);
     }
 
     void SetMove()
@@ -55,30 +23,30 @@ public class EnemyMove : MonoBehaviour
 
         switch (_brain._state)
         {
-            case EnemyState.Walk:
+            case EnemyState.WALK:
                 if (_targetPos != Vector3.zero)
                 {
                     distance = _targetPos - transform.position;
 
-                    if (distance.magnitude < _attackRange)
+                    if (distance.magnitude < 1.5f)
                     {
-                        StartCoroutine(SetWait());
+                        SetWait();
                         return;
                     }
 
                     posLookAt = new Vector3(_targetPos.x, transform.position.y, _targetPos.z);
                 }
                 break;
-            case EnemyState.Chase:
-                if (_target != null)
+            case EnemyState.CHASE:
+                if (_brain._target != null)
                 {
-                    distance = _target.transform.position - transform.position;
-                    if (distance.magnitude < _attackRange)
+                    distance = _brain._target.transform.position - transform.position;
+                    if (distance.magnitude < 1.5f)
                     {
-                        _brain._state = EnemyState.Attack;
+                        _brain._state = EnemyState.ATTACK;
                         return;
                     }
-                    posLookAt = new Vector3(_target.transform.position.x, transform.position.y, _target.transform.position.z);
+                    posLookAt = new Vector3(_brain._target.transform.position.x, transform.position.y, _brain._target.transform.position.z);
                 }
                 break;
             default:
@@ -96,52 +64,23 @@ public class EnemyMove : MonoBehaviour
         transform.LookAt(posLookAt);
     }
 
-    IEnumerator SetWait()
+    void SetWait()
     {
-        _brain._state = EnemyState.Wait;
+        StartCoroutine(SetWaitCoroutine());
+    }
+
+    IEnumerator SetWaitCoroutine()
+    {
+        _brain._state = EnemyState.WAIT;
         float timeWait = Random.Range(1.0f, 3.0f);
         yield return new WaitForSeconds(timeWait);
-        _brain._state = EnemyState.Idle;
+        _brain._state = EnemyState.IDLE;
     }
 
-    void OnCkTarget(GameObject target)
-    {
-        _target = target;
-        _targetTransform = _target.transform;
-        _brain._state = EnemyState.Chase;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Bullet"))
-        {
-            _hp -= 10;
-            if (_hp > 0)
-            {
-                //Instantiate(_effectDamage, other.transform.position, Quaternion.identity);
-
-                //effectDamageTween();
-
-            }
-            else
-            {
-                _brain._state = EnemyState.Death;
-            }
-        }
-    }
-
-    void SetAtk()
-    {
-        float distance = Vector3.Distance(_targetTransform.position, transform.position);
-        if (distance > _attackRange + 0.5f)
-        {
-            _brain._state = EnemyState.Chase;
-        }
-    }
 
     void SetIdle()
     {
-        if (_target == null)
+        if (_brain._target == null)
         {
             _targetPos = new Vector3(transform.position.x + Random.Range(-10.0f, 10.0f), transform.position.y + 1000f, transform.position.z + Random.Range(-10.0f, 10.0f));
             Ray ray = new Ray(_targetPos, Vector3.down);
@@ -152,11 +91,11 @@ public class EnemyMove : MonoBehaviour
             {
                 _targetPos.y = infoRayCast.point.y;
             }
-            _brain._state = EnemyState.Walk;
+            _brain._state = EnemyState.WALK;
         }
         else
         {
-            _brain._state = EnemyState.Chase;
+            _brain._state = EnemyState.CHASE;
         }
     }
 }
