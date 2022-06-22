@@ -30,6 +30,12 @@ public class CharacterUIController : MonoBehaviour
         _weaponImage = _playerInfo.transform.parent.GetChild(2).GetComponent<Image>();
     }
 
+    void Start()
+    {
+        UpdatePlayerInfoUI();
+        EventManager.StartListening("UpdatePlayerInfoUI", UpdatePlayerInfoUI);
+    }
+
     private void UpdatePlayerInfoUI()
     {
         _hpBar.fillAmount = _stat.HP / _stat.MAXHP;
