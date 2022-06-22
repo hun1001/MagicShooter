@@ -14,6 +14,9 @@ public abstract class SpellBase : MonoBehaviour
     [SerializeField]
     private float _damage = 10;
 
+    [SerializeField]
+    private GameObject _hitEffect = null;
+
     protected virtual void Update()
     {
         SpellMove();
@@ -30,5 +33,6 @@ public abstract class SpellBase : MonoBehaviour
         {
             other.GetComponent<EnemyAttack>().Damaged(_damage);
         }
+
     }
 }

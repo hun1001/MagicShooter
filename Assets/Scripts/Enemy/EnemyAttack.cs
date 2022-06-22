@@ -16,6 +16,15 @@ public class EnemyAttack : EnemyBase
         {
             _brain._state = EnemyState.CHASE;
         }
+        else
+        {
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        Debug.Log("Enemy Attack");
     }
 
     public void Damaged(float damage)
