@@ -2,8 +2,9 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    [SerializeField]
-    protected int _maxAmmo = 0;
+    public int _maxAmmo = 0;
+
+    public int _currentAmmo { get; protected set; }
 
     [SerializeField]
     protected float _reloadTime = 0.5f;

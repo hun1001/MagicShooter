@@ -16,6 +16,7 @@ public class CharacterUIController : MonoBehaviour
 
     private TextMeshProUGUI _levelText = null;
     private Image _weaponImage = null;
+    private TextMeshProUGUI _ammoText = null;
 
     private CharacterStat _stat = null;
     private CharacterAttack _attack = null;
@@ -28,6 +29,7 @@ public class CharacterUIController : MonoBehaviour
         _mpBar = _playerInfo.transform.GetChild(0).GetChild(1).GetComponent<Image>();
         _levelText = _playerInfo.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
         _weaponImage = _playerInfo.transform.parent.GetChild(2).GetComponent<Image>();
+        _ammoText = _playerInfo.transform.parent.GetChild(3).GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
@@ -42,5 +44,6 @@ public class CharacterUIController : MonoBehaviour
         _mpBar.fillAmount = _stat.MP / _stat.MAXMP;
         _levelText.text = _stat.LEVEL.ToString();
         _weaponImage.sprite = _attack._weapon._sprite;
+        _ammoText.text = $"{_attack._weapon._currentAmmo}/{_attack._weapon._maxAmmo}";
     }
 }
