@@ -18,19 +18,12 @@ public class EnemyAttack : EnemyBase
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Damaged(float damage)
     {
-        if (other.CompareTag("Bullet"))
+        _hp -= damage;
+        if (_hp <= 0)
         {
-            _hp -= 10;
-            if (_hp > 0)
-            {
-
-            }
-            else
-            {
-                _brain._state = EnemyState.DEATH;
-            }
+            _brain._state = EnemyState.DEATH;
         }
     }
 }
