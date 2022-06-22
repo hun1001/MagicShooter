@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
-    public EnemyState _state = EnemyState.IDLE;
+    public EnemyState _state
+    {
+        get
+        {
+            return _state;
+        }
+        set
+        {
+            if (_state != EnemyState.DEATH)
+            {
+                _state = value;
+            }
+        }
+    }
+
     private EnemyMove _move;
 
     public GameObject _target { get; private set; } = null;
@@ -45,5 +59,16 @@ public class EnemyBrain : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void Dead()
+    {
+        StartCoroutine(DeadCoroutine());
+    }
+
+    private IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(1.01f);
+        Destroy(gameObject);
     }
 }

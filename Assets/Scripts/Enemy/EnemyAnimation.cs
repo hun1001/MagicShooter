@@ -56,6 +56,7 @@ public class EnemyAnimation : EnemyBase
                 break;
             case EnemyState.DEATH:
                 _animation.CrossFade(_deathClip.name);
+                SendMessage("Dead");
                 break;
             default:
                 break;

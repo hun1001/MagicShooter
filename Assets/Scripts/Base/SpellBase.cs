@@ -33,6 +33,14 @@ public abstract class SpellBase : MonoBehaviour
         {
             other.GetComponent<EnemyAttack>().Damaged(_damage);
         }
+        Debug.Log("hit");
+        DeSpawn();
+    }
 
+    protected virtual void DeSpawn()
+    {
+        GameObject effect = Instantiate(_hitEffect, transform.position, Quaternion.identity);
+        Destroy(this);
+        Debug.Log("DeSpawn");
     }
 }

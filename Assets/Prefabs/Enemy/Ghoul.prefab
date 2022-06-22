@@ -1419,14 +1419,14 @@ Animation:
   m_GameObject: {fileID: 4294943986690878471}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400012, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+  m_Animation: {fileID: 7400000, guid: d62a340a9d385d74bab4600cfa59d9ad, type: 2}
   m_Animations:
-  - {fileID: 7400002, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  - {fileID: 7400004, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  - {fileID: 7400006, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  - {fileID: 7400008, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  - {fileID: 7400010, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  - {fileID: 7400012, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+  - {fileID: 7400000, guid: 039d9740639a1f043b6dc3235b391a29, type: 2}
+  - {fileID: 7400000, guid: 9dde993850f526941921758b8ed67f1e, type: 2}
+  - {fileID: 7400000, guid: 2a90706af26f9514d953f4ff3fec2cda, type: 2}
+  - {fileID: 7400000, guid: b38674554e170334280cf7f5f6d77a2f, type: 2}
+  - {fileID: 7400000, guid: 9bfeb9f52feaf0a49bb65cc2d75c0945, type: 2}
+  - {fileID: 7400000, guid: d62a340a9d385d74bab4600cfa59d9ad, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1472,12 +1472,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1756409b108474349b372a38a1cba876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleClip: {fileID: 7400012, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  _walkClip: {fileID: 7400004, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  _RunClip: {fileID: 7400002, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  _attack1Clip: {fileID: 7400006, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  _attack2Clip: {fileID: 7400008, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
-  _deathClip: {fileID: 7400010, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+  _idleClip: {fileID: 7400000, guid: d62a340a9d385d74bab4600cfa59d9ad, type: 2}
+  _walkClip: {fileID: 7400000, guid: 9dde993850f526941921758b8ed67f1e, type: 2}
+  _RunClip: {fileID: 7400000, guid: 039d9740639a1f043b6dc3235b391a29, type: 2}
+  _attack1Clip: {fileID: 7400000, guid: 2a90706af26f9514d953f4ff3fec2cda, type: 2}
+  _attack2Clip: {fileID: 7400000, guid: b38674554e170334280cf7f5f6d77a2f, type: 2}
+  _deathClip: {fileID: 7400000, guid: 9bfeb9f52feaf0a49bb65cc2d75c0945, type: 2}
 --- !u!114 &1451348723040729921
 MonoBehaviour:
   m_ObjectHideFlags: 0
