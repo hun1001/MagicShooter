@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : MonoBehaviour
+public class FireBall : SpellBase
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float _explosionDamage = 5;
+
+    [SerializeField]
+    private GameObject _rangeEffect = null;
+
+    private SphereCollider _sphereCollider = null;
+
+    private void Start()
     {
-        
+        _sphereCollider = GetComponent<SphereCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnTriggerEnter(Collider other)
     {
-        
+        base.OnTriggerEnter(other);
+    }
+
+    protected override void DeSpawn()
+    {
+        GameObject effect = Instantiate(_hitEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

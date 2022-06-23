@@ -114,7 +114,7 @@ MonoBehaviour:
   _distance: 20
   _speed: 50
   _damage: 10
-  _hitEffect: {fileID: 2929695041693667525, guid: 7b0a4e1adced17349b4130287871673b, type: 3}
+  _hitEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
 --- !u!96 &6746962292631831839
 TrailRenderer:
   serializedVersion: 2

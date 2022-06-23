@@ -6,16 +6,16 @@ using UnityEngine;
 public abstract class SpellBase : MonoBehaviour
 {
     [SerializeField]
-    private float _distance = 20f;
+    protected float _distance = 20f;
 
     [SerializeField]
-    private float _speed = 50f;
+    protected float _speed = 50f;
 
     [SerializeField]
-    private float _damage = 10;
+    protected float _damage = 10;
 
     [SerializeField]
-    private GameObject _hitEffect = null;
+    protected GameObject _hitEffect = null;
 
     protected virtual void Update()
     {
@@ -33,7 +33,6 @@ public abstract class SpellBase : MonoBehaviour
         {
             other.GetComponent<EnemyAttack>().Damaged(_damage);
         }
-        Debug.Log("hit");
         DeSpawn();
     }
 
