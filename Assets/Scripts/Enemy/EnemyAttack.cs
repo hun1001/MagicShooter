@@ -24,12 +24,14 @@ public class EnemyAttack : EnemyBase
 
     private void Attack()
     {
-        Debug.Log("Enemy Attack");
+        CharacterManager.Instance.CharacterStat.Damage(_attackDamage);
+        EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }
 
     public void Damaged(float damage)
     {
         _hp -= damage;
+        Debug.Log(_hp);
         if (_hp <= 0)
         {
             _brain.State = EnemyState.DEATH;

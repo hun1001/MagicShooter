@@ -40,7 +40,6 @@ public abstract class SpellBase : MonoBehaviour
     protected virtual void DeSpawn()
     {
         GameObject effect = Instantiate(_hitEffect, transform.position, Quaternion.identity);
-        Destroy(this);
-        Debug.Log("DeSpawn");
+        Destroy(gameObject);
     }
 }

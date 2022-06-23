@@ -7,8 +7,9 @@ public class Rifle : WeaponBase
     {
         if (_isReload || _currentAmmo <= 0)
         {
+            if (CharacterManager.Instance.CharacterStat.MP < 10)
+                return;
             CharacterManager.Instance.CharacterStat.UseMana(10);
-            return;
         }
         GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
         _currentAmmo--;

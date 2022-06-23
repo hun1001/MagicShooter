@@ -70,7 +70,8 @@ public class EnemyBrain : MonoBehaviour
 
     private IEnumerator DeadCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        gameObject.GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(0.89f);
         Destroy(gameObject);
     }
 }
