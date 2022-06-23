@@ -14,7 +14,7 @@ public class EnemyAttack : EnemyBase
         float distance = Vector3.Distance(_brain._targetTransform.position, transform.position);
         if (distance > _attackRange + 0.5f)
         {
-            _brain._state = EnemyState.CHASE;
+            _brain.State = EnemyState.CHASE;
         }
         else
         {
@@ -32,7 +32,7 @@ public class EnemyAttack : EnemyBase
         _hp -= damage;
         if (_hp <= 0)
         {
-            _brain._state = EnemyState.DEATH;
+            _brain.State = EnemyState.DEATH;
         }
     }
 }

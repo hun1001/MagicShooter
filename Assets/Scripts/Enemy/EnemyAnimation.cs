@@ -39,7 +39,7 @@ public class EnemyAnimation : EnemyBase
 
     void AnimationCtrl()
     {
-        switch (_brain._state)
+        switch (_brain.State)
         {
             case EnemyState.WAIT:
             case EnemyState.IDLE:

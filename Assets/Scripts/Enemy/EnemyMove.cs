@@ -26,7 +26,7 @@ public class EnemyMove : EnemyBase
         Vector3 amount = Vector3.zero;
         Vector3 direction = Vector3.zero;
 
-        switch (_brain._state)
+        switch (_brain.State)
         {
             case EnemyState.WALK:
                 if (_targetPos != Vector3.zero)
@@ -48,7 +48,7 @@ public class EnemyMove : EnemyBase
                     distance = _brain._target.transform.position - transform.position;
                     if (distance.magnitude < 1.5f)
                     {
-                        _brain._state = EnemyState.ATTACK;
+                        _brain.State = EnemyState.ATTACK;
                         return;
                     }
                     posLookAt = new Vector3(_brain._target.transform.position.x, transform.position.y, _brain._target.transform.position.z);
@@ -76,10 +76,10 @@ public class EnemyMove : EnemyBase
 
     IEnumerator SetWaitCoroutine()
     {
-        _brain._state = EnemyState.WAIT;
+        _brain.State = EnemyState.WAIT;
         float timeWait = Random.Range(1.0f, 3.0f);
         yield return new WaitForSeconds(timeWait);
-        _brain._state = EnemyState.IDLE;
+        _brain.State = EnemyState.IDLE;
     }
 
 
@@ -96,11 +96,11 @@ public class EnemyMove : EnemyBase
             {
                 _targetPos.y = infoRayCast.point.y;
             }
-            _brain._state = EnemyState.WALK;
+            _brain.State = EnemyState.WALK;
         }
         else
         {
-            _brain._state = EnemyState.CHASE;
+            _brain.State = EnemyState.CHASE;
         }
     }
 }

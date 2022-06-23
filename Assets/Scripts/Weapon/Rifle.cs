@@ -7,6 +7,7 @@ public class Rifle : WeaponBase
     {
         if (_isReload || _currentAmmo <= 0)
         {
+            CharacterManager.Instance.CharacterStat.UseMana(10);
             return;
         }
         GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
@@ -21,7 +22,6 @@ public class Rifle : WeaponBase
 
     private IEnumerator ReloadCoroutine()
     {
-        Debug.Log("Reload");
         if (!_isReload)
         {
             _isReload = true;

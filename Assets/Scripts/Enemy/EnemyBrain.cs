@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
-    public EnemyState _state
+    public EnemyState State
     {
         get
         {
@@ -18,6 +18,8 @@ public class EnemyBrain : MonoBehaviour
             }
         }
     }
+
+    private EnemyState _state;
 
     private EnemyMove _move;
 
@@ -68,7 +70,7 @@ public class EnemyBrain : MonoBehaviour
 
     private IEnumerator DeadCoroutine()
     {
-        yield return new WaitForSeconds(1.01f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 }

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class CharacterManager : MonoSingleton<CharacterManager>
 {
-    void Start()
+    public CharacterStat CharacterStat => _characterStat;
+    public CharacterAttack CharacterAttack => _characterAttack;
+
+    private CharacterStat _characterStat = null;
+    private CharacterAttack _characterAttack = null;
+
+    void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        _characterStat = GetComponent<CharacterStat>();
+        _characterAttack = GetComponent<CharacterAttack>();
     }
 
 }

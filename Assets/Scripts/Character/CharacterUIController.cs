@@ -23,8 +23,8 @@ public class CharacterUIController : MonoBehaviour
 
     void Awake()
     {
-        _stat = GetComponent<CharacterStat>();
-        _attack = GetComponent<CharacterAttack>();
+        _stat = CharacterManager.Instance.CharacterStat;
+        _attack = CharacterManager.Instance.CharacterAttack;
         _hpBar = _playerInfo.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         _mpBar = _playerInfo.transform.GetChild(0).GetChild(1).GetComponent<Image>();
         _levelText = _playerInfo.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
