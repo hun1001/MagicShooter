@@ -16,7 +16,6 @@ public class EnemyAttack : EnemyBase
 
     void SetAtk()
     {
-        Debug.Log("enemy atk");
         float distance = Vector3.Distance(_brain._targetTransform.position, transform.position);
         if (distance > _attackRange + 0.5f)
         {

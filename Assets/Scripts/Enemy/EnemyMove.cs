@@ -15,11 +15,6 @@ public class EnemyMove : EnemyBase
         EventManager.StartListening("EnemyIdle", SetIdle);
     }
 
-    void Update()
-    {
-        Debug.Log("Move State : " + _brain.State);
-    }
-
     void SetMove()
     {
         Vector3 distance = Vector3.zero;

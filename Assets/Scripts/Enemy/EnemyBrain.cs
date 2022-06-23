@@ -51,7 +51,6 @@ public class EnemyBrain : MonoBehaviour
 
     void CkState()
     {
-        Debug.Log("Brain State : " + _state);
         switch (_state)
         {
             case EnemyState.IDLE:
