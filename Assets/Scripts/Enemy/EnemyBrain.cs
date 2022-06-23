@@ -16,6 +16,10 @@ public class EnemyBrain : MonoBehaviour
             {
                 _state = value;
             }
+            else
+            {
+                _state = EnemyState.DEATH;
+            }
         }
     }
 
@@ -70,6 +74,7 @@ public class EnemyBrain : MonoBehaviour
 
     private IEnumerator DeadCoroutine()
     {
+        Debug.Log("Dead");
         gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(0.89f);
         Destroy(gameObject);

@@ -6,7 +6,12 @@ using UnityEngine;
 public class CharacterMove : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = default;
+    private float _walkSpeed = default;
+
+    [SerializeField]
+    private float _runSpeed = default;
+
+    private float _usingSpeed = default;
 
     // [SerializeField]
     // private float _jumpForce = default;
@@ -18,7 +23,10 @@ public class CharacterMove : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _usingSpeed = _walkSpeed;
         //EventManager.StartListening("PlayerJump", Jump);
+        EventManager.StartListening("CharacterIsRun", SelectRunSpeed);
+        EventManager.StartListening("CharacterIsWalk", SelectWalkSpeed);
     }
 
     void Update()
@@ -45,7 +53,17 @@ public class CharacterMove : MonoBehaviour
 
         move -= AddGravity();
 
-        _collisionFlags = _controller.Move(move * _speed * Time.deltaTime);
+        _collisionFlags = _controller.Move(move * _usingSpeed * Time.deltaTime);
+    }
+
+    void SelectWalkSpeed()
+    {
+        _usingSpeed = _walkSpeed;
+    }
+
+    void SelectRunSpeed()
+    {
+        _usingSpeed = _runSpeed;
     }
 
     // 게임에 안어울려서 일단 제외

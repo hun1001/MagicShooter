@@ -6,10 +6,14 @@ public class CharacterAnimation : MonoBehaviour
 {
     private Animator _animator = null;
 
+    private float isRun = 1;
+
     void Start()
     {
         _animator = GetComponent<Animator>();
         // EventManager.StartListening("PlayerJump", Jump);
+        EventManager.StartListening("CharacterIsRun", IsRun);
+        EventManager.StartListening("CharacterIsWalk", IsWalk);
     }
 
     void Update()
@@ -27,8 +31,22 @@ public class CharacterAnimation : MonoBehaviour
         {
             _animator.SetBool("IsMove", false);
         }
-        _animator.SetFloat("xDir", InputManager.Instance.Horizontal);
-        _animator.SetFloat("yDir", InputManager.Instance.Vertical);
+
+        float hInputValue = InputManager.Instance.Horizontal * isRun;
+        float vInputValue = InputManager.Instance.Vertical * isRun;
+
+        _animator.SetFloat("xDir", hInputValue);
+        _animator.SetFloat("yDir", vInputValue);
+    }
+
+    private void IsRun()
+    {
+        isRun = 2;
+    }
+
+    private void IsWalk()
+    {
+        isRun = 1;
     }
 
     // private void Jump()

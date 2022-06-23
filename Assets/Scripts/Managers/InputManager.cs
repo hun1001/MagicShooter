@@ -42,6 +42,14 @@ public class InputManager : MonoSingleton<InputManager>
         {
             EventManager.TriggerEvent("PlayerReload");
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            EventManager.TriggerEvent("CharacterIsRun");
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            EventManager.TriggerEvent("CharacterIsWalk");
+        }
     }
 
     private void UpdateHorizontal()

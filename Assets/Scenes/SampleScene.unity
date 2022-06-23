@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 505095946}
   - component: {fileID: 505095945}
   - component: {fileID: 505095944}
+  - component: {fileID: 505095948}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -946,11 +947,28 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 1444266549}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505095948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505095943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c34a3d9704ff247bc199dd63bdc9bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 20
+  _speed: 50
+  _damage: 10
+  _hitEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
+  _explosionDamage: 5
+  _rangeEffect: {fileID: 0}
 --- !u!1 &584293376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,51 +2157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78681d4c4d758434484005ade420f3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1444266548
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1444266549}
-  - component: {fileID: 1444266550}
-  m_Layer: 0
-  m_Name: ExplosionRange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1444266549
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444266548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 505095947}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1444266550
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444266548}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1446965673
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,7 +5073,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb7a4e145dec254292d9140435fc90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _walkSpeed: 2
+  _runSpeed: 5
 --- !u!4 &7673487252127738038
 Transform:
   m_ObjectHideFlags: 0
