@@ -10,6 +10,7 @@ public class Rifle : WeaponBase
             if (CharacterManager.Instance.CharacterStat.MP < 10)
                 return;
             CharacterManager.Instance.CharacterStat.UseMana(10);
+            _currentAmmo++;
         }
         GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
         _currentAmmo--;
