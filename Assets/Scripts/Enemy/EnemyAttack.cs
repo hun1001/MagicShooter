@@ -9,8 +9,14 @@ public class EnemyAttack : EnemyBase
     private float _attackRange = 1.5f;
     private float _attackDamage = 10.0f;
 
+    void Start()
+    {
+        EventManager.StartListening("EnemyAttack", SetAtk);
+    }
+
     void SetAtk()
     {
+        Debug.Log("enemy atk");
         float distance = Vector3.Distance(_brain._targetTransform.position, transform.position);
         if (distance > _attackRange + 0.5f)
         {
@@ -25,6 +31,7 @@ public class EnemyAttack : EnemyBase
     private void Attack()
     {
         CharacterManager.Instance.CharacterStat.Damage(_attackDamage);
+        Debug.Log("Attack");
         EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }
 

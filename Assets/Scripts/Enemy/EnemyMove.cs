@@ -6,17 +6,18 @@ public class EnemyMove : EnemyBase
 {
     [SerializeField]
     private float _speed = 5.0f;
-    // 나중에 추가할 수도?
-    // [SerializeField]
-    // private float _runSpeed = 10.0f;
 
     private Vector3 _targetPos = Vector3.zero;
 
     void Start()
     {
         EventManager.StartListening("EnemyMove", SetMove);
-        EventManager.StartListening("EnemyWait", SetWait);
         EventManager.StartListening("EnemyIdle", SetIdle);
+    }
+
+    void Update()
+    {
+        Debug.Log("Move State : " + _brain.State);
     }
 
     void SetMove()

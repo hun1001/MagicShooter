@@ -22,6 +22,15 @@ public class CharacterStat : MonoBehaviour
         _mp = _maxMP;
     }
 
+    void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 50;
+        style.normal.textColor = Color.black;
+
+        GUI.Label(new Rect(10, 90, 300, 100), $"Character HP : {_hp}", style);
+    }
+
     public void LevelUp()
     {
         _level++;

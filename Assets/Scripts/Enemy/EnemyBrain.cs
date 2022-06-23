@@ -12,13 +12,13 @@ public class EnemyBrain : MonoBehaviour
         }
         set
         {
-            if (_state != EnemyState.DEATH)
+            if (_state == EnemyState.DEATH)
             {
-                _state = value;
+                _state = EnemyState.DEATH;
             }
             else
             {
-                _state = EnemyState.DEATH;
+                _state = value;
             }
         }
     }
@@ -34,6 +34,7 @@ public class EnemyBrain : MonoBehaviour
     void Start()
     {
         _state = EnemyState.IDLE;
+
     }
 
     void Update()
@@ -50,6 +51,7 @@ public class EnemyBrain : MonoBehaviour
 
     void CkState()
     {
+        Debug.Log("Brain State : " + _state);
         switch (_state)
         {
             case EnemyState.IDLE:
