@@ -39,6 +39,7 @@ public class EnemyAnimation : EnemyBase
 
     void AnimationCtrl()
     {
+        Debug.Log("Animation : " + _brain.State);
         switch (_brain.State)
         {
             case EnemyState.WAIT:

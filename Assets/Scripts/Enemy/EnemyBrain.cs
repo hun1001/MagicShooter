@@ -34,7 +34,6 @@ public class EnemyBrain : MonoBehaviour
     void Start()
     {
         _state = EnemyState.IDLE;
-
     }
 
     void Update()
@@ -51,6 +50,7 @@ public class EnemyBrain : MonoBehaviour
 
     void CkState()
     {
+        Debug.Log("Brain : " + _state);
         switch (_state)
         {
             case EnemyState.IDLE:

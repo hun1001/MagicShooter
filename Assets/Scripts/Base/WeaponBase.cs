@@ -7,6 +7,9 @@ public abstract class WeaponBase : MonoBehaviour
     public int _currentAmmo { get; protected set; }
 
     [SerializeField]
+    protected float _distance = 20f;
+
+    [SerializeField]
     protected float _reloadTime = 0.5f;
 
     public Transform _bulletSpawn { get; protected set; } = null;

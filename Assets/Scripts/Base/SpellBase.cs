@@ -5,8 +5,6 @@ using UnityEngine;
 
 public abstract class SpellBase : MonoBehaviour
 {
-    [SerializeField]
-    protected float _distance = 20f;
 
     [SerializeField]
     protected float _speed = 50f;
