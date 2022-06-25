@@ -47,6 +47,7 @@ public class EnemyBrain : MonoBehaviour
         _targetTransform = _target.transform;
     }
 
+    // 생각해 보니 적같은 경우 이벤트 매니저 말고 SendMassage사용 해야될듯 나중에 수정하기
     void CkState()
     {
         switch (_state)

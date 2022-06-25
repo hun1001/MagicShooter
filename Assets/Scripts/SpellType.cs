@@ -1,4 +1,4 @@
-enum SpellType
+public enum SpellType
 {
     MPBALL,
     FIREBALL,
