@@ -50,6 +50,18 @@ public class InputManager : MonoSingleton<InputManager>
         {
             EventManager.TriggerEvent("CharacterIsWalk");
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            EventManager.TriggerEvent("UseMPSpell");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            EventManager.TriggerEvent("UseFireBall");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            EventManager.TriggerEvent("UseIceBall");
+        }
     }
 
     private void UpdateHorizontal()

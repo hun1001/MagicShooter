@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class CharacterAttack : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _bulletPrefab = null;
+    public GameObject _bulletPrefab = null;
 
     private Transform _bulletSpawn = null;
     private RaycastHit hit;

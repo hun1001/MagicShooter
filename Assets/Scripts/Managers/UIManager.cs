@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     private void ChangeCanvas()
     {
+        MouseManager.Show(!Cursor.visible);
+        MouseManager.Lock(Cursor.lockState == CursorLockMode.Locked ? false : true);
         _gamePlayCanvas.enabled = !_gamePlayCanvas.enabled;
         _inventoryCanvas.enabled = !_inventoryCanvas.enabled;
     }
