@@ -8,5 +8,11 @@ public class GameManager : MonoBehaviour
     {
         MouseManager.Lock(true);
         MouseManager.Show(false);
+        EventManager.StartListening("GameOver", GameOver);
+    }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0f;
     }
 }

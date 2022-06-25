@@ -16,4 +16,9 @@ public class CharacterManager : MonoSingleton<CharacterManager>
         _characterAttack = GetComponent<CharacterAttack>();
     }
 
+    public void Dead()
+    {
+        EventManager.TriggerEvent("CharacterDie");
+        EventManager.TriggerEvent("GameOver");
+    }
 }

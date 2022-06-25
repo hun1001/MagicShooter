@@ -9,6 +9,8 @@ public class EnemyAttack : EnemyBase
     private float _attackRange = 1.5f;
     private float _attackDamage = 10.0f;
 
+    private bool _isAttacking = false;
+
     void Start()
     {
         EventManager.StartListening("EnemyAttack", SetAtk);
@@ -29,8 +31,13 @@ public class EnemyAttack : EnemyBase
 
     private void Attack()
     {
+        StartCoroutine(AttackCoroutine());
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
         CharacterManager.Instance.CharacterStat.Damage(_attackDamage);
-        Debug.Log("Attack");
         EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }
 

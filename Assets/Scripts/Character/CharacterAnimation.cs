@@ -14,6 +14,7 @@ public class CharacterAnimation : MonoBehaviour
         // EventManager.StartListening("PlayerJump", Jump);
         EventManager.StartListening("CharacterIsRun", IsRun);
         EventManager.StartListening("CharacterIsWalk", IsWalk);
+        EventManager.StartListening("CharacterDie", IsDead);
     }
 
     void Update()
@@ -47,6 +48,11 @@ public class CharacterAnimation : MonoBehaviour
     private void IsWalk()
     {
         isRun = 1;
+    }
+
+    private void IsDead()
+    {
+        _animator.SetTrigger("Dead");
     }
 
     // private void Jump()

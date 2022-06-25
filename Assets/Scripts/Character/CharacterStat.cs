@@ -16,6 +16,8 @@ public class CharacterStat : MonoBehaviour
     private float _mp = 100;
     private float _maxMP = 100;
 
+    private bool _isDamaged = false;
+
     private void Start()
     {
         _hp = _maxHP;
@@ -42,11 +44,23 @@ public class CharacterStat : MonoBehaviour
 
     public void Damage(float damage)
     {
-        _hp -= damage;
-        if (_hp < 0)
+        if (!_isDamaged)
         {
+            StartCoroutine(DamageCoroutine(damage));
+        }
+    }
+
+    private IEnumerator DamageCoroutine(float damage)
+    {
+        _isDamaged = true;
+        _hp -= damage;
+        yield return new WaitForSeconds(2f);
+        if (_hp <= 0)
+        {
+            CharacterManager.Instance.Dead();
             _hp = 0;
         }
+        _isDamaged = false;
     }
 
     public void Heal(float heal)

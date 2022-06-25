@@ -45,12 +45,10 @@ public class EnemyBrain : MonoBehaviour
     {
         _target = target;
         _targetTransform = _target.transform;
-        _state = EnemyState.CHASE;
     }
 
     void CkState()
     {
-        Debug.Log("Brain : " + _state);
         switch (_state)
         {
             case EnemyState.IDLE:
@@ -75,7 +73,6 @@ public class EnemyBrain : MonoBehaviour
 
     private IEnumerator DeadCoroutine()
     {
-        Debug.Log("Dead");
         gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(0.89f);
         Destroy(gameObject);
