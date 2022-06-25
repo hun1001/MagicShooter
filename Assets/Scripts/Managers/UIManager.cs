@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoSingleton<UIManager>
 {
     [SerializeField]
     private Canvas _gamePlayCanvas;
@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Canvas _gameOverCanvas = null;
 
+    [SerializeField]
+    private Text _errorText = null;
+
     void Start()
     {
         _gamePlayCanvas.enabled = true;
@@ -23,6 +26,11 @@ public class UIManager : MonoBehaviour
 
         EventManager.StartListening("ChangeCanvas", ChangeCanvas);
         EventManager.StartListening("GameOver", GameOver);
+    }
+
+    public void ErrorText(string text)
+    {
+        StartCoroutine(ErrorTextCoroutine(text));
     }
 
     private void ChangeCanvas()
@@ -44,5 +52,12 @@ public class UIManager : MonoBehaviour
         _gameOverCanvas.enabled = true;
         _inventoryCanvas.enabled = false;
         _gamePlayCanvas.enabled = false;
+    }
+
+    private IEnumerator ErrorTextCoroutine(string text)
+    {
+        _errorText.text = text;
+        yield return new WaitForSeconds(1.5f);
+        _errorText.text = "";
     }
 }

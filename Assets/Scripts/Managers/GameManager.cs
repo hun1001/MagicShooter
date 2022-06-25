@@ -14,5 +14,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Time.timeScale = 0f;
+        MouseManager.Lock(false);
+        MouseManager.Show(true);
     }
 }

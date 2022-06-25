@@ -19,6 +19,11 @@ public class SpellManager : MonoSingleton<SpellManager>
     void Start()
     {
         _spellUseState = new bool[3];
+        for (int i = 0; i < 3; ++i)
+        {
+            _spellUseState[i] = false;
+        }
+
         _usingSpell = SpellType.MPBALL;
 
         _spellImages = Spells.GetComponentsInChildren<Image>();
@@ -33,6 +38,11 @@ public class SpellManager : MonoSingleton<SpellManager>
 
     void UseMpSpell()
     {
+        if (!_spellUseState[(int)SpellType.MPBALL])
+        {
+            return;
+        }
+
         _spellImages[(int)SpellType.MPBALL].DOFade(1, 0);
         _spellImages[(int)SpellType.FIREBALL].DOFade(0.5f, 0);
         _spellImages[(int)SpellType.ICEBALL].DOFade(0.5f, 0);
@@ -42,6 +52,11 @@ public class SpellManager : MonoSingleton<SpellManager>
 
     void UseFireBall()
     {
+        if (!_spellUseState[(int)SpellType.FIREBALL])
+        {
+            return;
+        }
+
         _spellImages[(int)SpellType.MPBALL].DOFade(0.5f, 0);
         _spellImages[(int)SpellType.FIREBALL].DOFade(1, 0f);
         _spellImages[(int)SpellType.ICEBALL].DOFade(0.5f, 0);
@@ -51,6 +66,11 @@ public class SpellManager : MonoSingleton<SpellManager>
 
     void UseIceBall()
     {
+        if (!_spellUseState[(int)SpellType.ICEBALL])
+        {
+            return;
+        }
+
         _spellImages[(int)SpellType.MPBALL].DOFade(0.5f, 0);
         _spellImages[(int)SpellType.FIREBALL].DOFade(0.5f, 0);
         _spellImages[(int)SpellType.ICEBALL].DOFade(1, 0);

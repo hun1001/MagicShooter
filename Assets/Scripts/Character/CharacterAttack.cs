@@ -44,8 +44,14 @@ public class CharacterAttack : MonoBehaviour
             layDir = hit.point - _bulletSpawn.position;
         }
 
-        //GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(layDir));
-        _weapon.Fire(_bulletPrefab, layDir);
+        if (_bulletPrefab != null)
+        {
+            _weapon.Fire(_bulletPrefab, layDir);
+        }
+        else
+        {
+            UIManager.Instance.ErrorText("Please Select Spell");
+        }
     }
 
     void Reload()
