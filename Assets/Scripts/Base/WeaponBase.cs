@@ -20,7 +20,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _bulletSpawn = transform.parent.transform.Find("BulletSpawnPos");
+        _bulletSpawn = transform.parent.parent.transform.Find("BulletSpawnPos");
         _isReload = false;
     }
 

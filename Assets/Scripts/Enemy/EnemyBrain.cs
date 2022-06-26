@@ -78,6 +78,8 @@ public class EnemyBrain : MonoBehaviour
 
         _isDead = true;
         CharacterManager.Instance.CharacterStat.LevelUp();
+        CharacterManager.Instance.CharacterStat._money += 10;
+        EventManager.TriggerEvent("UpdatePlayerInfoUI");
         StartCoroutine(DeadCoroutine());
     }
 

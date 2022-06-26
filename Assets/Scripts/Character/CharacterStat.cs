@@ -16,12 +16,16 @@ public class CharacterStat : MonoBehaviour
     private float _mp = 100;
     private float _maxMP = 100;
 
+    // 이거 여기 넣으면 안되지만 시간 이슈로 걍 여기 넣자 그리고 public으로 해도 안됨
+    public int _money = 100;
+
     private bool _isDamaged = false;
 
     private void Start()
     {
         _hp = _maxHP;
         _mp = _maxMP;
+        _money = 100;
     }
 
     void OnGUI()

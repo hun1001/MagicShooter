@@ -20,9 +20,9 @@ public class CharacterAttack : MonoBehaviour
         EventManager.StartListening("PlayerReload", Reload);
     }
 
-    void Update()
+    public void SetWeapon()
     {
-        //Debug.DrawRay(transform.position, transform.forward * 100.0f, Color.blue);
+
     }
 
     void Fire()

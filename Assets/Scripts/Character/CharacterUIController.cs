@@ -21,6 +21,9 @@ public class CharacterUIController : MonoBehaviour
     private CharacterStat _stat = null;
     private CharacterAttack _attack = null;
 
+    [SerializeField]
+    private TextMeshProUGUI _money = null;
+
     void Awake()
     {
         _stat = CharacterManager.Instance.CharacterStat;
@@ -45,5 +48,6 @@ public class CharacterUIController : MonoBehaviour
         _levelText.text = _stat.LEVEL.ToString();
         _weaponImage.sprite = _attack._weapon._sprite;
         _ammoText.text = $"{_attack._weapon._currentAmmo}/{_attack._weapon._maxAmmo}";
+        _money.text = $"{CharacterManager.Instance.CharacterStat._money}";
     }
 }
