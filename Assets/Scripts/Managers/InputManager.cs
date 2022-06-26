@@ -22,7 +22,7 @@ public class InputManager : MonoSingleton<InputManager>
         UpdateHorizontal();
         UpdateVertical();
         UpdateMouseMovement();
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             EventManager.TriggerEvent("PlayerFire");
         }

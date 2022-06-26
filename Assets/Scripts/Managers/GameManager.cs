@@ -17,8 +17,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void GameOver()
     {
-        Time.timeScale = 0f;
+        StartCoroutine(StopTimeCoroutine());
         MouseManager.Lock(false);
         MouseManager.Show(true);
+    }
+
+    private IEnumerator StopTimeCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0f;
     }
 }

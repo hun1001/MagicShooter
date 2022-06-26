@@ -1156,7 +1156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000009915559}
+  m_AnchoredPosition: {x: 0, y: 0.00005092654}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &396094343
@@ -3166,7 +3166,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 26322054}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999981
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3945,7 +3945,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259133788}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 963194227}
@@ -7737,6 +7737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInfo: {fileID: 1163622785}
   _money: {fileID: 683674968}
+  _shopWeaponImage: {fileID: 983604343}
 --- !u!4 &7673487252127738050
 Transform:
   m_ObjectHideFlags: 0

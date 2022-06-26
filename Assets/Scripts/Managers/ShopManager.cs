@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : MonoSingleton<ShopManager>
 {
     [SerializeField]
     private GameObject SpellRockParents = null;
@@ -32,7 +32,12 @@ public class ShopManager : MonoBehaviour
         {
             _canUseWeapon[i] = WeaponUseState.NONE;
         }
-        UpdateUI();
+    }
+
+    void Start()
+    {
+        SelectWeapon(0);
+        SelectWeapon(0);
     }
 
     public void UnRockSpell(int type)
