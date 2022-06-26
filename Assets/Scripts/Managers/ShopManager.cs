@@ -61,8 +61,10 @@ public class ShopManager : MonoBehaviour
         {
             _canUseWeapon[type] = WeaponUseState.USING;
             GameObject temp = CharacterManager.Instance.CharacterAttack._weapon.gameObject.gameObject.transform.parent.gameObject;
+            CharacterManager.Instance.CharacterAttack.SetWeapon(null);
             Destroy(temp.transform.GetChild(0).gameObject);
             GameObject weaponTemp;
+            Debug.Log((WeaponType)type);
             switch ((WeaponType)type)
             {
                 case WeaponType.PISTOL:
@@ -77,6 +79,9 @@ public class ShopManager : MonoBehaviour
             }
 
             weaponTemp = Instantiate(weaponTemp, temp.transform);
+            weaponTemp.GetComponent<SkinnedMeshRenderer>().rootBone = CharacterManager.Instance.transform.Find("Hips");
+            CharacterManager.Instance.CharacterAttack.SetWeapon(weaponTemp.GetComponent<WeaponBase>());
+            EventManager.TriggerEvent("UpdatePlayerInfoUI");
         }
         UpdateUI();
     }

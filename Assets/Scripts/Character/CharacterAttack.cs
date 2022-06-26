@@ -14,15 +14,16 @@ public class CharacterAttack : MonoBehaviour
 
     void Start()
     {
-        _weapon = transform.GetComponentInChildren<WeaponBase>();
+        SetWeapon(transform.Find("Weapon").GetChild(0).GetComponent<WeaponBase>());
         _bulletSpawn = _weapon._bulletSpawn;
         EventManager.StartListening("PlayerFire", Fire);
         EventManager.StartListening("PlayerReload", Reload);
     }
 
-    public void SetWeapon()
+    public void SetWeapon(WeaponBase newWeapon)
     {
-
+        _weapon = newWeapon;
+        Debug.Log(_weapon);
     }
 
     void Fire()
