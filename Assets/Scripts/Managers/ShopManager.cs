@@ -10,7 +10,7 @@ public class ShopManager : MonoBehaviour
 
     private Image[] _spellRocks = null;
 
-    void Start()
+    void Awake()
     {
         _spellRocks = SpellRockParents.transform.GetComponentsInChildren<Image>();
     }
@@ -18,9 +18,16 @@ public class ShopManager : MonoBehaviour
 
     public void UnRockSpell(int type)
     {
-        // TODO : 구매 추가 재화 사라지게 만들기
-        _spellRocks[(int)type].enabled = false;
-        SpellManager.Instance.SetSpell((SpellType)type, true);
-        EventManager.TriggerEvent("UpdatePlayerInfoUI");
+        if (CharacterManager.Instance.CharacterStat.LEVEL > 10)
+        {
+            CharacterManager.Instance.CharacterStat.UseLevel(10);
+            _spellRocks[(int)type].enabled = false;
+            SpellManager.Instance.SetSpell((SpellType)type, true);
+            EventManager.TriggerEvent("UpdatePlayerInfoUI");
+        }
+        else
+        {
+            UIManager.Instance.ErrorText("You need more level");
+        }
     }
 }

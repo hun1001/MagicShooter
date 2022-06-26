@@ -8,6 +8,10 @@ public class GameManager : MonoSingleton<GameManager>
     {
         MouseManager.Lock(true);
         MouseManager.Show(false);
+
+        CharacterManager.Instance.CharacterStat.LevelUp(10);
+        FindObjectOfType<ShopManager>().UnRockSpell((int)SpellType.MPBALL);
+
         EventManager.StartListening("GameOver", GameOver);
     }
 

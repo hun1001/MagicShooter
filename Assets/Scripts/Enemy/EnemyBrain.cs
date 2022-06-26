@@ -31,6 +31,8 @@ public class EnemyBrain : MonoBehaviour
 
     public Transform _targetTransform { get; private set; } = null;
 
+    private bool _isDead = false;
+
     void Start()
     {
         _state = EnemyState.IDLE;
@@ -69,6 +71,12 @@ public class EnemyBrain : MonoBehaviour
 
     void Dead()
     {
+        if (_isDead)
+        {
+            return;
+        }
+
+        _isDead = true;
         CharacterManager.Instance.CharacterStat.LevelUp();
         StartCoroutine(DeadCoroutine());
     }

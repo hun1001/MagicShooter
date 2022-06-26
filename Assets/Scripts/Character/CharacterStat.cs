@@ -29,7 +29,6 @@ public class CharacterStat : MonoBehaviour
         GUIStyle style = new GUIStyle();
         style.fontSize = 50;
         style.normal.textColor = Color.black;
-
         GUI.Label(new Rect(10, 90, 300, 100), $"Character HP : {_hp}", style);
     }
 
@@ -40,11 +39,13 @@ public class CharacterStat : MonoBehaviour
         _maxMP += 10;
         _hp = _maxHP;
         _mp = _maxMP;
+        EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }
 
-    public void UseLevel(int value)
+    public void UseLevel(int value = 1)
     {
         _level -= value;
+        EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }
 
     public void Damage(float damage)
