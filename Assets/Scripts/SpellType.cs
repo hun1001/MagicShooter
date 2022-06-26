@@ -2,5 +2,6 @@ public enum SpellType
 {
     MPBALL,
     FIREBALL,
-    ICEBALL
+    ICEBALL,
+    NONE
 }

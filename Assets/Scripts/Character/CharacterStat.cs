@@ -33,13 +33,18 @@ public class CharacterStat : MonoBehaviour
         GUI.Label(new Rect(10, 90, 300, 100), $"Character HP : {_hp}", style);
     }
 
-    public void LevelUp()
+    public void LevelUp(int value = 1)
     {
-        _level++;
+        _level += value;
         _maxHP += 10;
         _maxMP += 10;
         _hp = _maxHP;
         _mp = _maxMP;
+    }
+
+    public void UseLevel(int value)
+    {
+        _level -= value;
     }
 
     public void Damage(float damage)

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyMove : EnemyBase
 {
-    [SerializeField]
-    private float _speed = 5.0f;
+    public float _speed = 5.0f;
 
     private Vector3 _targetPos = Vector3.zero;
 

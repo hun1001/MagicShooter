@@ -1,6 +1,3 @@
-using System.Reflection;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -24,7 +21,7 @@ public class SpellManager : MonoSingleton<SpellManager>
             _spellUseState[i] = false;
         }
 
-        _usingSpell = SpellType.MPBALL;
+        _usingSpell = SpellType.NONE;
 
         _spellImages = Spells.GetComponentsInChildren<Image>();
 
@@ -43,9 +40,21 @@ public class SpellManager : MonoSingleton<SpellManager>
             return;
         }
 
-        _spellImages[(int)SpellType.MPBALL].DOFade(1, 0);
-        _spellImages[(int)SpellType.FIREBALL].DOFade(0.5f, 0);
-        _spellImages[(int)SpellType.ICEBALL].DOFade(0.5f, 0);
+        if (_spellUseState[(int)SpellType.MPBALL])
+        {
+            _spellImages[(int)SpellType.MPBALL].DOFade(1, 0.5f);
+        }
+
+        if (_spellUseState[(int)SpellType.FIREBALL])
+        {
+            _spellImages[(int)SpellType.FIREBALL].DOFade(0.5f, 0);
+        }
+
+        if (_spellUseState[(int)SpellType.ICEBALL])
+        {
+            _spellImages[(int)SpellType.ICEBALL].DOFade(0.5f, 0);
+        }
+
         CharacterManager.Instance.CharacterAttack._bulletPrefab = Resources.Load<GameObject>("Prefabs/Spell/MPSpell");
         _usingSpell = SpellType.MPBALL;
     }
@@ -57,9 +66,21 @@ public class SpellManager : MonoSingleton<SpellManager>
             return;
         }
 
-        _spellImages[(int)SpellType.MPBALL].DOFade(0.5f, 0);
-        _spellImages[(int)SpellType.FIREBALL].DOFade(1, 0f);
-        _spellImages[(int)SpellType.ICEBALL].DOFade(0.5f, 0);
+        if (_spellUseState[(int)SpellType.MPBALL])
+        {
+            _spellImages[(int)SpellType.MPBALL].DOFade(0.5f, 0);
+        }
+
+        if (_spellUseState[(int)SpellType.FIREBALL])
+        {
+            _spellImages[(int)SpellType.FIREBALL].DOFade(1, 0.5f);
+        }
+
+        if (_spellUseState[(int)SpellType.ICEBALL])
+        {
+            _spellImages[(int)SpellType.ICEBALL].DOFade(0.5f, 0);
+        }
+
         CharacterManager.Instance.CharacterAttack._bulletPrefab = Resources.Load<GameObject>("Prefabs/Spell/FireBall");
         _usingSpell = SpellType.FIREBALL;
     }
@@ -71,9 +92,22 @@ public class SpellManager : MonoSingleton<SpellManager>
             return;
         }
 
-        _spellImages[(int)SpellType.MPBALL].DOFade(0.5f, 0);
-        _spellImages[(int)SpellType.FIREBALL].DOFade(0.5f, 0);
-        _spellImages[(int)SpellType.ICEBALL].DOFade(1, 0);
+        if (_spellUseState[(int)SpellType.MPBALL])
+        {
+            _spellImages[(int)SpellType.MPBALL].DOFade(0.5f, 0);
+        }
+
+        if (_spellUseState[(int)SpellType.FIREBALL])
+        {
+            _spellImages[(int)SpellType.FIREBALL].DOFade(0.5f, 0);
+        }
+
+        if (_spellUseState[(int)SpellType.ICEBALL])
+        {
+            _spellImages[(int)SpellType.ICEBALL].DOFade(1f, 0.5f);
+        }
+
+        CharacterManager.Instance.CharacterAttack._bulletPrefab = Resources.Load<GameObject>("Prefabs/Spell/IceBall");
         _usingSpell = SpellType.ICEBALL;
     }
 

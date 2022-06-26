@@ -69,6 +69,7 @@ public class EnemyBrain : MonoBehaviour
 
     void Dead()
     {
+        CharacterManager.Instance.CharacterStat.LevelUp();
         StartCoroutine(DeadCoroutine());
     }
 
