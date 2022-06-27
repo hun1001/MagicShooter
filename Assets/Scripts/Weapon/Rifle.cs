@@ -29,16 +29,23 @@ public class Rifle : WeaponBase
                     CharacterManager.Instance.CharacterStat.UseMana(10);
                     _currentAmmo++;
                     GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
+                    AddUseBullet(bullet);
                     _currentAmmo--;
+                    UIManager.Instance.ErrorText("Please Reload you're using mana");
                     EventManager.TriggerEvent("UpdatePlayerInfoUI");
                     yield return new WaitForSeconds(_delay);
                     _isFire = false;
+                }
+                else
+                {
+                    UIManager.Instance.ErrorText("Please Reload You can't shoot spell");
                 }
             }
             else
             {
                 _isFire = true;
                 GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
+                AddUseBullet(bullet);
                 _currentAmmo--;
                 EventManager.TriggerEvent("UpdatePlayerInfoUI");
                 yield return new WaitForSeconds(_delay);

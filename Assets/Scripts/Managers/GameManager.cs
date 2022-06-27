@@ -13,6 +13,14 @@ public class GameManager : MonoSingleton<GameManager>
         FindObjectOfType<ShopManager>().UnRockSpell((int)SpellType.MPBALL);
 
         EventManager.StartListening("GameOver", GameOver);
+        StartCoroutine(Setting());
+    }
+
+    private IEnumerator Setting()
+    {
+        yield return null;
+        EventManager.TriggerEvent("UseMPSpell");
+        EventManager.TriggerEvent("PlayerReload");
     }
 
     private void GameOver()

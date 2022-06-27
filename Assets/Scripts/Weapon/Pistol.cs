@@ -5,8 +5,9 @@ using UnityEngine;
 public class Pistol : WeaponBase
 {
     private bool _wasFire = false;
-    public void Update()
+    protected override void Update()
     {
+        base.Update();
         if (Input.GetMouseButtonUp(0))
         {
             _wasFire = false;
@@ -21,6 +22,7 @@ public class Pistol : WeaponBase
         _wasFire = true;
         if (_isReload || _currentAmmo <= 0)
         {
+            UIManager.Instance.ErrorText("Please Reload you're using mana");
             if (CharacterManager.Instance.CharacterStat.MP <= 5)
                 return;
             CharacterManager.Instance.CharacterStat.UseMana(5);
@@ -28,6 +30,7 @@ public class Pistol : WeaponBase
         }
         GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
         _currentAmmo--;
+        AddUseBullet(bullet);
         EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }
 

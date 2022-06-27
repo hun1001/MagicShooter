@@ -39,7 +39,6 @@ public class EnemyAttack : EnemyBase
     public void Damaged(float damage)
     {
         _hp -= damage;
-        Debug.Log(_hp);
         if (_hp <= 0)
         {
             _brain.State = EnemyState.DEATH;

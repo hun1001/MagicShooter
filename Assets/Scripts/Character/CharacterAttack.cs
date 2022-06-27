@@ -23,7 +23,6 @@ public class CharacterAttack : MonoBehaviour
     public void SetWeapon(WeaponBase newWeapon)
     {
         _weapon = newWeapon;
-        Debug.Log(_weapon);
     }
 
     void Fire()

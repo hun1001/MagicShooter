@@ -87,6 +87,6 @@ public class EnemyBrain : MonoBehaviour
     {
         gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(0.89f);
-        Destroy(gameObject);
+        EnemySpawnManager.Instance.GhoulDead(this.gameObject);
     }
 }
