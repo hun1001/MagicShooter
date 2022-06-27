@@ -31,7 +31,7 @@ public class EnemyAttack : EnemyBase
 
     private IEnumerator AttackCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.01f);
         CharacterManager.Instance.CharacterStat.Damage(_attackDamage);
         EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }

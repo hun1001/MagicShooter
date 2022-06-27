@@ -40,7 +40,6 @@ public class CharacterStat : MonoBehaviour
     public void LevelUp(int value = 1)
     {
         _level += value;
-        _maxHP += 10;
         _maxMP += 10;
         _hp = _maxHP;
         _mp = _maxMP;
