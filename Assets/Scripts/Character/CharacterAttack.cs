@@ -15,7 +15,7 @@ public class CharacterAttack : MonoBehaviour
     void Awake()
     {
         SetWeapon(transform.Find("Weapon").GetChild(0).GetComponent<WeaponBase>());
-        _bulletSpawn = _weapon._bulletSpawn;
+        _bulletSpawn = transform.Find("BulletSpawnPos");
         EventManager.StartListening("PlayerFire", Fire);
         EventManager.StartListening("PlayerReload", Reload);
     }
@@ -59,12 +59,12 @@ public class CharacterAttack : MonoBehaviour
         _weapon.Reload();
     }
 
-    void OnGUI()
-    {
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 50;
-        style.normal.textColor = Color.black;
+    // void OnGUI()
+    // {
+    //     GUIStyle style = new GUIStyle();
+    //     style.fontSize = 50;
+    //     style.normal.textColor = Color.black;
 
-        GUI.Label(new Rect(10, 10, 300, 100), "Hit point" + hit.point, style);
-    }
+    //     GUI.Label(new Rect(10, 10, 300, 100), "Hit point" + hit.point, style);
+    // }
 }

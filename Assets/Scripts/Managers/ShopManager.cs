@@ -36,7 +36,7 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     void Start()
     {
-        CharacterManager.Instance.CharacterStat._money += 200;
+        CharacterManager.Instance.CharacterStat._money += 100;
         SelectWeapon(0);
         SelectWeapon(0);
     }
@@ -58,7 +58,6 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     public void SelectWeapon(int type)
     {
-        Debug.Log("SelectWeapon");
         if (_canUseWeapon[type] == WeaponUseState.NONE)
         {
             BuyWeapon(type);
@@ -83,7 +82,6 @@ public class ShopManager : MonoSingleton<ShopManager>
             CharacterManager.Instance.CharacterAttack.SetWeapon(null);
             Destroy(temp.transform.GetChild(0).gameObject);
             GameObject weaponTemp;
-            Debug.Log((WeaponType)type);
             switch ((WeaponType)type)
             {
                 case WeaponType.PISTOL:

@@ -35,14 +35,14 @@ public class CharacterMove : MonoBehaviour
         Rotate();
     }
 
-    void OnGUI()
-    {
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 50;
-        style.normal.textColor = Color.black;
+    // void OnGUI()
+    // {
+    //     GUIStyle style = new GUIStyle();
+    //     style.fontSize = 50;
+    //     style.normal.textColor = Color.black;
 
-        GUI.Label(new Rect(10, 60, 300, 100), $"Pos {transform.position}", style);
-    }
+    //     GUI.Label(new Rect(10, 60, 300, 100), $"Pos {transform.position}", style);
+    // }
 
     private void Move()
     {

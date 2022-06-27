@@ -26,16 +26,16 @@ public class CharacterStat : MonoBehaviour
         _hp = _maxHP;
         _mp = _maxMP;
         // 테스트용 레벨 업
-        LevelUp(100);
+        //LevelUp(100);
     }
 
-    void OnGUI()
-    {
-        GUIStyle style = new GUIStyle();
-        style.fontSize = 50;
-        style.normal.textColor = Color.black;
-        GUI.Label(new Rect(10, 90, 300, 100), $"Character HP : {_hp}", style);
-    }
+    // void OnGUI()
+    // {
+    //     GUIStyle style = new GUIStyle();
+    //     style.fontSize = 50;
+    //     style.normal.textColor = Color.black;
+    //     GUI.Label(new Rect(10, 90, 300, 100), $"Character HP : {_hp}", style);
+    // }
 
     public void LevelUp(int value = 1)
     {

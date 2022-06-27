@@ -23,10 +23,10 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
             {
                 if (ghoulTemp.transform.position.x > 60 || ghoulTemp.transform.position.x < -70 || ghoulTemp.transform.position.z > 60 || ghoulTemp.transform.position.z < -75)
                 {
-                    GhoulDead(ghoulTemp);
+                    ghoulTemp.transform.position = new Vector3(Random.Range(-70f, 60f), 0, Random.Range(-75f, 60f));
                 }
             }
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(5f);
         }
     }
 
@@ -42,7 +42,7 @@ public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
         while (true)
         {
             SpawnGhoul();
-            coolTime = Random.Range(1f, 10f);
+            coolTime = Random.Range(0.5f, 5f);
             yield return new WaitForSeconds(coolTime);
         }
     }

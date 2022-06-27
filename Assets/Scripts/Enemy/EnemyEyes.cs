@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyEyes : EnemyBase
 {
     [SerializeField]
-    private float _viewDistance = 15f;
+    private float _viewDistance = 30f;
     private Transform _target = null;
 
     void Start()
