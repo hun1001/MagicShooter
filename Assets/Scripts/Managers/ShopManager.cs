@@ -36,7 +36,7 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     void Start()
     {
-        CharacterManager.Instance.CharacterStat._money += 100;
+        CharacterManager.Instance.CharacterStat._money += 200;
         SelectWeapon(0);
         SelectWeapon(0);
     }
@@ -65,7 +65,20 @@ public class ShopManager : MonoSingleton<ShopManager>
         }
         else if (_canUseWeapon[type] == WeaponUseState.HAVING)
         {
-            _canUseWeapon[type] = WeaponUseState.USING;
+            for (int i = 0; i < _canUseWeapon.Length; ++i)
+            {
+                if (i == type)
+                {
+                    _canUseWeapon[i] = WeaponUseState.USING;
+                }
+                else
+                {
+                    if (_canUseWeapon[i] == WeaponUseState.USING)
+                    {
+                        _canUseWeapon[i] = WeaponUseState.HAVING;
+                    }
+                }
+            }
             GameObject temp = CharacterManager.Instance.CharacterAttack._weapon.gameObject.gameObject.transform.parent.gameObject;
             CharacterManager.Instance.CharacterAttack.SetWeapon(null);
             Destroy(temp.transform.GetChild(0).gameObject);
