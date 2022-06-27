@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : EnemyBase
 {
     [Header("Fight properties")]
-    private float _hp = 50;
+    private float _hp = 100;
     private float _attackRange = 1.5f;
     private float _attackDamage = 10.0f;
 

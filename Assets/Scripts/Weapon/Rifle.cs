@@ -29,7 +29,7 @@ public class Rifle : WeaponBase
                     CharacterManager.Instance.CharacterStat.UseMana(10);
                     _currentAmmo++;
                     GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
-                    AddUseBullet(bullet);
+                    //AddUseBullet(bullet);
                     _currentAmmo--;
                     UIManager.Instance.ErrorText("Please Reload you're using mana");
                     EventManager.TriggerEvent("UpdatePlayerInfoUI");
@@ -45,7 +45,7 @@ public class Rifle : WeaponBase
             {
                 _isFire = true;
                 GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
-                AddUseBullet(bullet);
+                //AddUseBullet(bullet);
                 _currentAmmo--;
                 EventManager.TriggerEvent("UpdatePlayerInfoUI");
                 yield return new WaitForSeconds(_delay);

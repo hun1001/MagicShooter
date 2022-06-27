@@ -15,6 +15,11 @@ public abstract class SpellBase : MonoBehaviour
     [SerializeField]
     protected GameObject _hitEffect = null;
 
+    protected virtual void Start()
+    {
+        Destroy(gameObject, 20f);
+    }
+
     protected virtual void Update()
     {
         SpellMove();

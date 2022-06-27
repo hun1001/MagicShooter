@@ -14,8 +14,9 @@ public class FireBall : SpellBase
 
     private GameObject _firstHitObject = null;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _sphereCollider = GetComponent<SphereCollider>();
     }
 

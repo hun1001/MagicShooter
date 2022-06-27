@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public int score;
+
     void Start()
     {
         MouseManager.Lock(true);
         MouseManager.Show(false);
+
+        score = 0;
 
         CharacterManager.Instance.CharacterStat.LevelUp(10);
         FindObjectOfType<ShopManager>().UnRockSpell((int)SpellType.MPBALL);

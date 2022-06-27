@@ -5,9 +5,8 @@ using UnityEngine;
 public class Pistol : WeaponBase
 {
     private bool _wasFire = false;
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
         if (Input.GetMouseButtonUp(0))
         {
             _wasFire = false;
@@ -30,7 +29,7 @@ public class Pistol : WeaponBase
         }
         GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
         _currentAmmo--;
-        AddUseBullet(bullet);
+        //AddUseBullet(bullet);
         EventManager.TriggerEvent("UpdatePlayerInfoUI");
     }
 
