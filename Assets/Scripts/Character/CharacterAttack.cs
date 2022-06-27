@@ -12,7 +12,7 @@ public class CharacterAttack : MonoBehaviour
 
     public WeaponBase _weapon { get; private set; } = null;
 
-    void Start()
+    void Awake()
     {
         SetWeapon(transform.Find("Weapon").GetChild(0).GetComponent<WeaponBase>());
         _bulletSpawn = _weapon._bulletSpawn;

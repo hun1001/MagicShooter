@@ -8,12 +8,6 @@ public class EnemyMove : EnemyBase
 
     private Vector3 _targetPos = Vector3.zero;
 
-    void Start()
-    {
-        EventManager.StartListening("EnemyMove", SetMove);
-        EventManager.StartListening("EnemyIdle", SetIdle);
-    }
-
     void SetMove()
     {
         Vector3 distance = Vector3.zero;

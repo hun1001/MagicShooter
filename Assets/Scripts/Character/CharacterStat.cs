@@ -25,7 +25,6 @@ public class CharacterStat : MonoBehaviour
     {
         _hp = _maxHP;
         _mp = _maxMP;
-        _money = 100;
     }
 
     void OnGUI()

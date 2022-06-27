@@ -55,14 +55,14 @@ public class EnemyBrain : MonoBehaviour
         switch (_state)
         {
             case EnemyState.IDLE:
-                EventManager.TriggerEvent("EnemyIdle");
+                SendMessage("SetIdle");
                 break;
             case EnemyState.CHASE:
             case EnemyState.WALK:
-                EventManager.TriggerEvent("EnemyMove");
+                SendMessage("SetMove");
                 break;
             case EnemyState.ATTACK:
-                EventManager.TriggerEvent("EnemyAttack");
+                SendMessage("SetAtk");
                 break;
             default:
                 break;

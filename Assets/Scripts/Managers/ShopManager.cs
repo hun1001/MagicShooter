@@ -36,6 +36,7 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     void Start()
     {
+        CharacterManager.Instance.CharacterStat._money += 100;
         SelectWeapon(0);
         SelectWeapon(0);
     }

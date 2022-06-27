@@ -11,11 +11,6 @@ public class EnemyAttack : EnemyBase
 
     private bool _isAttacking = false;
 
-    void Start()
-    {
-        EventManager.StartListening("EnemyAttack", SetAtk);
-    }
-
     void SetAtk()
     {
         float distance = Vector3.Distance(_brain._targetTransform.position, transform.position);
