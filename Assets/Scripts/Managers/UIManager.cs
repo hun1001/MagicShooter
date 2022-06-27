@@ -37,6 +37,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         MouseManager.Show(!Cursor.visible);
         MouseManager.Lock(Cursor.lockState == CursorLockMode.Locked ? false : true);
+        Time.timeScale = Time.timeScale == 1 ? 0 : 1;
         _gamePlayCanvas.enabled = !_gamePlayCanvas.enabled;
         _inventoryCanvas.enabled = !_inventoryCanvas.enabled;
     }

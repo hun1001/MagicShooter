@@ -27,4 +27,9 @@ public class GameManager : MonoSingleton<GameManager>
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

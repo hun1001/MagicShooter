@@ -52,6 +52,6 @@ public class CharacterUIController : MonoBehaviour
         _weaponImage.sprite = _attack._weapon._sprite;
         _shopWeaponImage.sprite = _attack._weapon._sprite;
         _ammoText.text = $"{_attack._weapon._currentAmmo}/{_attack._weapon._maxAmmo}";
-        _money.text = $"{CharacterManager.Instance.CharacterStat._money}";
+        _money.text = $"money : {CharacterManager.Instance.CharacterStat._money}";
     }
 }
