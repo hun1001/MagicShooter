@@ -18,6 +18,9 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField]
     private Text _errorText = null;
 
+    [SerializeField]
+    private Text _lastScore = null;
+
     void Start()
     {
         _gamePlayCanvas.enabled = true;
@@ -53,6 +56,7 @@ public class UIManager : MonoSingleton<UIManager>
         _gameOverCanvas.enabled = true;
         _inventoryCanvas.enabled = false;
         _gamePlayCanvas.enabled = false;
+        _lastScore.text = $"Score: {GameManager.Instance.score}";
     }
 
     private IEnumerator ErrorTextCoroutine(string text)
