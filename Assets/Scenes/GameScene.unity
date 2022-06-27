@@ -5531,7 +5531,7 @@ MonoBehaviour:
   _inventoryCanvas: {fileID: 1259133791}
   _gameOverCanvas: {fileID: 1565251477}
   _errorText: {fileID: 959328776}
-  _lastScore: {fileID: 0}
+  _lastScore: {fileID: 398698243}
 --- !u!1 &1549928219
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,7 +5811,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565251474}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 963194227}
