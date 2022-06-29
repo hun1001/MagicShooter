@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioClip _fireSound;
+
+    private AudioSource _audioSource = null;
+
+    void Awake()
     {
-        
+        _audioSource = GetComponent<AudioSource>();
+        _fireSound = Resources.Load<AudioClip>("Sounds/Hand Gun 1");
+        _audioSource.clip = _fireSound;
+        _audioSource.loop = false;
+        EventManager.StartListening("PlayFireSound", PlayFireSound);
     }
 
-    // Update is called once per frame
-    void Update()
+    void PlayFireSound()
     {
-        
+        _audioSource.Play();
     }
 }

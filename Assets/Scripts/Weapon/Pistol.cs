@@ -28,6 +28,7 @@ public class Pistol : WeaponBase
             _currentAmmo++;
         }
         GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
+        EventManager.TriggerEvent("PlayFireSound");
         _currentAmmo--;
         //AddUseBullet(bullet);
         EventManager.TriggerEvent("UpdatePlayerInfoUI");

@@ -31,6 +31,7 @@ public class Rifle : WeaponBase
                     GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
                     //AddUseBullet(bullet);
                     _currentAmmo--;
+                    EventManager.TriggerEvent("PlayFireSound");
                     UIManager.Instance.ErrorText("Please Reload you're using mana");
                     EventManager.TriggerEvent("UpdatePlayerInfoUI");
                     yield return new WaitForSeconds(_delay);
@@ -45,6 +46,7 @@ public class Rifle : WeaponBase
             {
                 _isFire = true;
                 GameObject bullet = Instantiate(bulletPrefab, _bulletSpawn.position, Quaternion.LookRotation(direction));
+                EventManager.TriggerEvent("PlayFireSound");
                 //AddUseBullet(bullet);
                 _currentAmmo--;
                 EventManager.TriggerEvent("UpdatePlayerInfoUI");
